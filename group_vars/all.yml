@@ -2,4 +2,4 @@
 ansible_become: yes
 ansible_network_os: ios
 ansible_ssh_user: m.mattioli@unibo.it
-ansible_ssh_pass: Pietro@2005
+ansible_ssh_pass: xxxxx
