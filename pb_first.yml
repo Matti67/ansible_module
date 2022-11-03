@@ -1,0 +1,29 @@
+---
+
+#- name: ssh username/password
+#  connection: local
+#  hosts: user
+#  become_method: enable
+#  gather_facts: true
+#  tasks:
+  #    - name: run show vlans on remote devices
+  #      aruba_command:
+  #        commands: show vlans
+        #        commands: show interfaces brief
+        #register: commands
+            #        wait_for:
+            #          - result[0] 
+            #          - result[1]
+            #    - name: Gather all legacy facts
+            #      ios_facts:
+            #        gather_subset: all
+- hosts: ios
+  connection: local
+  vars:
+  tasks:
+    - snmp_facts:
+        host: "{{ credentials.host }}"
+        version: "{{ credentials.snmpversion }}"
+        community: "{{ credentials.snmpcommunity }}"
+      register: snmpfacts_out
+    - copy: content="{{ snmpfacts_out | to_nice_json }}" dest="/user/max/ansible/cisco/{{credentials.host}}_snmpfacts.json"

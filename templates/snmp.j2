@@ -1,0 +1,8 @@
+snmp-server contact {{ snmp.contact }}
+snmp-server location {{ snmp.location }}
+{% for rw_community in snmp.rw %}
+snmp-server community {{ rw_community }} rw
+{% endfor %}
+snmp-server view {{ snmp.view }} iso included
+snmp-server group {{ snmp.group }} v3 priv read {{ snmp.view }}
+snmp-server user {{ snmp.snmpuser }} {{ snmp.group }} v3 auth sha {{ snmp.pass1 }} priv des {{ snmp.pass1 }}

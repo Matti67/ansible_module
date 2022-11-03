@@ -1,0 +1,16 @@
+---
+- name: "PLAY 1: Collect Device Facts"
+  hosts: ios
+  gather_facts: yes
+
+  tasks:
+    - name: show command test
+      ios_command:
+        commands:
+          - show version
+
+    - name: "P1T1: Gather Device Facts"
+      ios_facts:
+        gather_subset: min
+      register: device_facts
+    - debug: var=device_facts

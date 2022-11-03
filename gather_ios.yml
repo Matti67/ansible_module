@@ -1,0 +1,19 @@
+---
+   - name: capture show output
+     hosts: test
+     gather_facts: no
+     connection: network_cli
+
+     tasks:
+       - name: show run
+         ios_command:
+           commands:
+           - show run
+           - show ip route
+           - show version
+         register: config
+
+       - name: save output to local directory
+         copy:
+           content: "{{ config.stdout | replace('\\n', '\n') }}"
+           dest: "/home/max/ansible/cisco/{{ inventory_hostname }}.ios"

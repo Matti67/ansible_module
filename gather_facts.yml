@@ -1,0 +1,30 @@
+
+---
+- name: GATHER FACTS FOR IOS
+  hosts: ios
+  connection: local
+  gather_facts: yes 
+  #  ios_facts:
+  #  gather_subset: all  # Gather Facts Ensabled
+
+  tasks:
+
+    - name: GATHER FACTS FOR IOS IN A TASK
+      ios_facts:
+
+        #    cisco.ios_facts:
+    - name: VIEW ALL ANSIBLE FACT KEYS
+      debug:
+        var: ansible_facts.keys()
+
+    - name: VIEW HOSTNAME
+      debug:
+        var: ansible_net_hostname
+
+    - name: VIEW OS VERSION
+      debug:
+        var: ansible_net_version
+
+    - name: VIEW MODEL
+      debug:
+        var: ansible_net_mo

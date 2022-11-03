@@ -1,0 +1,43 @@
+---
+ue5:
+  hosts:
+    SW-BO-NAV-UE5-PI-1:
+      ansible_host: "172.30.61.40"
+    SW-BO-NAV-UE5-PI-2:
+      ansible_host: "172.30.61.41"
+    SW-BO-NAV-UE5-PTA-1:
+      ansible_host: "172.30.61.42"
+    SW-BO-NAV-UE5-PTA-VOIP:
+      ansible_host: "172.30.61.43"
+    SW-BO-NAV-UE5-1A-1:
+      ansible_host: "172.30.61.44"
+    SW-BO-NAV-UE5-1A-VOIP:
+      ansible_host: "172.30.61.45"
+    SW-BO-NAV-UE5-2-1:
+      ansible_host: "172.30.61.46"
+    SW-BO-NAV-UE5-2-VOIP:
+      ansible_host: "172.30.61.47"
+    SW-BO-NAV-UE5-3-1:
+      ansible_host: "172.30.61.48"
+    SW-BO-NAV-UE5-3-VOIP:
+      ansible_host: "172.30.61.49"
+    SW-BO-NAV-UE5-4-1:
+      ansible_host: "172.30.61.50"
+    SW-BO-NAV-UE5-4-VOIP:
+      ansible_host: "172.30.61.51"
+    SW-BO-NAV-UE5-5-1:
+      ansible_host: "172.30.61.52"
+    SW-BO-NAV-UE5-5-VOIP:
+      ansible_host: "172.30.61.53"
+    SW-BO-NAV-UE5-6-1:
+      ansible_host: "172.30.61.54"
+    SW-BO-NAV-UE5-6-VOIP:
+      ansible_host: "172.30.61.55"
+    SW-BO-NAV-UE5-7-1.unibo.it:
+      ansible_host: "172.30.61.56"
+    SW-BO-NAV-UE5-7-VOIP.unibo.it:
+      ansible_host: "172.30.61.57"
+test:
+    hosts:
+          user_R:
+                  ansible_host: "172.30.42.93"

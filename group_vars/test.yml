@@ -1,0 +1,16 @@
+---
+ansible_become: yes
+ansible_network_os: ios
+ansible_ssh_user: mng_reti
+ansible_ssh_pass: kS6n3GWS1xkr
+
+snmp:
+  contact: cesia.noc@unibo.it
+  location: Viale Filopanti,3
+  rw:
+    - pubrim
+  view: ViewDefault
+  group: ManagerPriv
+  snmpuser: mng_reti
+  pass1: nxbc3hWZpV
+  pass2: PrivPass2

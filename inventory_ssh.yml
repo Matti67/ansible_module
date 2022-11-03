@@ -1,0 +1,18 @@
+---
+user:
+  hosts:
+    user_R:
+      ansible_host: "172.30.42.93"
+  vars:
+    ansible_network_os: "ios"
+    ansible_ssh_user: m.mattioli@unibo.it
+    ansible_ssh_pass: Pietro@2005
+
+
+pubkeynopass:
+  hosts:
+    pubkeynopass_R:
+      ansible_host: "192.168.1.98"
+  vars:
+    ansible_network_os: "ios"
+    ansible_ssh_user: sshpubkey

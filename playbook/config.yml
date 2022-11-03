@@ -1,0 +1,24 @@
+---
+
+  - name: DEPLOY SNMP CONFIGURATIONS 
+    hosts: test
+    gather_facts: no
+    connection: network_cli
+
+    tasks:
+
+      - name: GENERATE SNMP CONFIG FILE
+        template: src=../templates/snmp.j2 dest=./configs/snmp-auto.cfg
+        tags: build
+
+      - name: DEPLOY SNMP FROM AUTO-GENERATED FILE
+        ios_config:
+          src: "../configs/snmp-auto.cfg"
+          #provider: "{{ credentials }}"
+        notify: save config
+        tags: deploy
+
+    handlers:
+      - name: save config
+        ios_command:
+          commands: wr
