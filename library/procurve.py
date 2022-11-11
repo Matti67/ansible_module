@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python3.6
 import os
 import getpass
 import time
@@ -120,11 +120,12 @@ def main():
         module.fail_json(msg="pexpect.exceptions.{0}: {1}".format(type(err).__name__, err))
     except RuntimeError as err:
         module.fail_json(msg="{0}".format(err))
+    sys.exit()
 
 
 def run_pexpect(commands, options, host, ssh_user, ssh_pass, time):
     #import pexpect
-    changed = True
+    changed = False
     '''script_path = '/path/to/myscript.sh'
     if not os.path.exists(script_path):
         raise RuntimeError("Error: the script '{0}' does not exist!".format(script_path))
@@ -137,13 +138,15 @@ def run_pexpect(commands, options, host, ssh_user, ssh_pass, time):
     prompt = r'\[{0}\@.+?\]\$'.format(getpass.getuser())
     output = ""
     '''
-    ssh_user='mng_reti'
-    host='172.30.16.196'
-    ssh_pass='kS6n3GWS1xkr'
-    child = pexpect.spawn('/usr/bin/plink -ssh %s@%s' % (ssh_user,host))
+    #ssh_user='mng_reti'
+    #host='172.30.16.196'
+    #ssh_pass='kS6n3GWS1xkr'
+    child = pexpect.spawn('/usr/bin/plink -ssh %s@%s' % (ssh_user,host), encoding='utf-8')
     #child = pexpect.spawn('/usr/bin/plink -ssh mng_reti@172.30.16.196')
-    child.logfile = sys.stdout
-    child.delaybeforesend = 2
+    logf = open("/home/massimiliano/ansible_module/filelog" , "w")
+    #child.logfile = sys.stdout
+    child.logfile_read = logf
+    child.delaybeforesend = 1
     try:
         child.expect('Continue')
         child.sendline('y')
@@ -183,12 +186,14 @@ def run_pexpect(commands, options, host, ssh_user, ssh_pass, time):
     except:
         print('unable to continue')
     child.expect('#')
-    filelog = open("/home/max/ansible/module/filelog" , "w")
+    logfile = "/home/massimiliano/ansible_module/filelog"
+    #fileg = open("/home/massimiliano/ansible_module/filelog" , "w")
     #child.expect("Press any key to continue")
     #time.sleep(2)
     for command in commands:
         child.sendline(command)
-        i = child.expect([r'ERROR.+?does not exist', r'ERROR.+?$', '#'])
+        #i = child.expect([r'ERROR.+?does not exist', r'ERROR.+?$', '#'])
+        i=child.expect ([pexpect.TIMEOUT, pexpect.EOF], timeout=2)
         if i == 0:
         # Attempt to intelligently add items that may have multiple instances and are missing
         # e.g. "socket.2" may need "add socket" run before it.
@@ -214,8 +219,13 @@ def run_pexpect(commands, options, host, ssh_user, ssh_pass, time):
                                 "  {0}".format(child.after.strip()))
         elif i == 2:
             # Set timeout shorter for final commands
-            changed = True
-            print >>filelog, (child.before)
+            changed = False
+            #print >>fileg, (child.before)
+            #fileg.write(child.before)
+            current_settings=child.before
+            #print(child.before)
+            #sys.stdout.flush()
+            #print(child.before, f=fileg)
             #child.timeout = 1
             # If we processed any commands run the save function last
     #time.slee(5)
@@ -233,13 +243,24 @@ def run_pexpect(commands, options, host, ssh_user, ssh_pass, time):
         elif i == 2:
             break'''
             # Always print out the config data from out script and return it to the user
-    child.sendline('show running-config')
-    child.expect('#')
+    #child.sendline('show running-config')
+    #child.expect('#')
     # Note that child.before contains the output from the last expected item and this expect
-    current_settings = (child.before)
-    print >>filelog, (child.before)
-    logfile = filelog
-    filelog.close()
+    #current_settings = child.before
+    #print(child.before, f=filelog)
+    #print >>fileg, (child.before)
+    #current_settings=child.before
+    #print(child.before)
+    #sys.stdout.flush()
+    #fileg.close()
+    '''fileg = open("/home/massimiliano/ansible_module/filelog" , "r")
+    lines = fileg.readlines()
+    limited_n_ints = ''
+    for i in lines:
+      limited_n_ints = limited_n_ints + i
+    print(limited_n_ints)
+    current_settings = limited_n_ints
+    fileg.close()'''
     # Run the 'exit' command that is inside myscript
     child.sendline('exit')
     # Look for a linux prompt to see if we quit
@@ -248,9 +269,9 @@ def run_pexpect(commands, options, host, ssh_user, ssh_pass, time):
     child.sendline("logout")
     child.expect(r'y/n')
     child.sendline("y")
-    pass
+    logf.close()
     child.close()
-    sys.exit()
+    #sys.exit()
     return current_settings, changed, logfile
 
 
