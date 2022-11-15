@@ -191,6 +191,7 @@ def run_pexpect(commands, options, host, ssh_user, ssh_pass, time):
     #child.expect("Press any key to continue")
     #time.sleep(2)
     #child.logfile = sys.stdout
+    temp_status = []
     for command in commands:
         child.sendline(command)
         i = child.expect([r'ERROR.+?does not exist', r'ERROR.+?$', '#'])
@@ -220,8 +221,10 @@ def run_pexpect(commands, options, host, ssh_user, ssh_pass, time):
         elif i == 2:
             # Set timeout shorter for final commands
             #changed = True
-            current_settings = child.before.strip()
+            #current_settings = child.before.strip()
+            temp_status.append(child.before.strip())
             print((child.before), file=filelog)
+            print(child.before.strip())
             #child.timeout = 1
             # If we processed any commands run the save function last
     #time.slee(5)
@@ -243,10 +246,14 @@ def run_pexpect(commands, options, host, ssh_user, ssh_pass, time):
     child.sendline('\r\n')
     child.expect('#')
     # Note that child.before contains the output from the last expected item and this expect
-    current_settings = child.before.strip()
+    #temp_status.append(child.before.strip())
     print((child.before), file=filelog)
-    #print
+    current_settings = temp_status
+    #current_settings = child.before
+    #logfile = open("/var/log/ansible.log" , "a+")
+    #logfile.write(filelog.read())
     logfile = "/var/log/ansible.log"
+    #logfile.close()
     filelog.close()
     # Run the 'exit' command that is inside myscript
     child.sendline('exit')
@@ -258,7 +265,7 @@ def run_pexpect(commands, options, host, ssh_user, ssh_pass, time):
     #exit_status = child.before.split('\r\n')[1].strip()
     pass
     child.close()
-    sys.exit()
+    #sys.exit()
     return current_settings, changed, logfile
 
 if __name__ == '__main__':
