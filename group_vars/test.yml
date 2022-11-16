@@ -1,6 +1,6 @@
 ---
 ansible_become: yes
-ansible_network_os: ios
+ansible_network_os: local
 ansible_ssh_user: mng_reti
 ansible_ssh_pass: kS6n3GWS1xkr
 

@@ -1,0 +1,13 @@
+---
+   - name: show devices ip
+     hosts: test
+     gather_facts: no
+     connection: local
+     vars:
+       var: ansible_host
+       #test_var1: ansible_host
+       #test_var2: "{{ test_var1 }}"
+  
+     tasks:
+       - debug:
+           var: ansible_host

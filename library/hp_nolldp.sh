@@ -16,6 +16,7 @@ file2=$(cat  /home/max/ansible/procurve/int_up |tr "\n" " ")
 snmpbulkwalk -v 2c -c pubrim $ip 1.0.8802.1.1.2.1.4.1.1.9\
 | sed -n -e 's/^.*\.\(.*\)\.\(.* =.*\).*\(SW\|SWT\|sw\|swt\).*$/\1/p' &>> "$path"/rem_id;
 file3=$(cat  /home/max/ansible/procurve/rem_id |tr "\n" " ")
+hostname=$(snmpget -v 2c -c pubrim $ip sysName.0 | sed -n -e 's/^.*STRING: //p')
 lldpItem=($file3)
 Lengthid=${#lldpItem[@]}
 file5=$path/rem_id;
@@ -62,7 +63,7 @@ do
     if [[ ${fileItem[$i]:0:1} =~ [0-9] && ${fileItem[$i+1]:0:1} =~ [0-9] ]]; then
       last=${fileItem[$i+1]};
     else
-      echo "$initial-$last" &>>$path/camp$COUNT;
+      echo "$initial-$last" &>>$path../module/host_vars/$hostname;
       COUNT=$(expr $COUNT + 1);
       initial=${fileItem[$i+1]};
       echo "$COUNT" &> $path/Eth_int;
@@ -95,7 +96,7 @@ do
             K=$(expr $i - $j);
             if [[ ${intupItem[$K]} == 'up(1)' ]]; then
               lastup=${fileItem[$K]};
-              echo "$lastup" &>> $path/camp$COUNT;
+              echo "$lastup" &>> $path../module/host_vars/$hostname;;
               COUNT=$(expr $COUNT + 1);
               echo "$COUNT" &> $path/Eth_int;
             fi
@@ -105,7 +106,7 @@ do
         else
       #statements
     #now is time to build camp var with elements
-          echo "$initial-$last" &>>$path/camp$COUNT;
+          echo "$initial-$last" &>>$path../module/host_vars/$hostname;;
           COUNT=$(expr $COUNT + 1);
           initial=${fileItem[$i+1]};
           echo "$COUNT" &> $path/Eth_int;
@@ -122,7 +123,7 @@ do
     else
       #statements
     #now is time to build camp var with elements
-      echo "$initial" &>>$path/camp$COUNT;
+      echo "$initial" &>>$path../module/host_vars/$hostname;
       COUNT=$(expr $COUNT + 1);
       initial=${fileItem[$i+1]};
       echo "$COUNT" &> $path/Eth_int;

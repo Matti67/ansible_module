@@ -1,0 +1,11 @@
+---
+  - name: execute a script to add vars on proper .yml file inside host_vars folder
+    hosts: localhost
+    become_user: root
+    tasks:
+    - script: ../library/hp_nolldp.sh ip
+      vars:
+        ip: "{{ ansible_host }}"
+      register: results
+    - debug:
+        var: results.stdout
