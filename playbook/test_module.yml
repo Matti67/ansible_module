@@ -2,20 +2,21 @@
    - name: capture show output
      hosts: test
      gather_facts: no
-     #connection: network_cli
+    #connection: network_cli
      connection: local
 
      tasks:
-       - name: "Run myscript to set up myprogram"
-         proc_facts:
-           #           options: "-o myoption"
-           host: "{{ ansible_host }}"
-           ssh_user: "{{ ansible_ssh_user }}"
-           ssh_pass: "{{ ansible_ssh_pass }}"
-           commands:
-             - "no page"
-             - "show running-config"
-             - "show lldp info remote-device"
-                #      - "set port 7000"
-                #      - "set webport 80"
-           time: 10
+
+     - name: "Run myscript to set up myprogram"
+       proc_facts:
+        #           options: "-o myoption"
+         host: "{{ ansible_host }}"
+         ssh_user: "{{ ansible_ssh_user }}"
+         ssh_pass: "{{ ansible_ssh_pass }}"
+         commands:
+           - "no page"
+           - "show running-config"
+           - "show lldp info remote-device"
+              #      - "set port 7000"
+              #      - "set webport 80"
+         timeparam: 10

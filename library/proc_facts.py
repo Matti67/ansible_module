@@ -92,7 +92,7 @@ def main():
             host=dict(required=True, type='str', no_log=True),
             ssh_user=dict(required=True, type='str', no_log=True),
             ssh_pass=dict(required=True, type='str', no_log=True),
-            time=dict(required=False, type='int', default='300')
+            timeparam=dict(required=False, type='int', default='300')
         )
     )
     commands = module.params['commands']
@@ -100,7 +100,7 @@ def main():
     host = module.params['host']
     ssh_user = module.params['ssh_user']
     ssh_pass = module.params['ssh_pass']
-    time = module.params['time']
+    timeparam = module.params['timeparam']
 
     try:
         # Importing the modules here allows us to catch them not being installed on remote hosts
@@ -111,7 +111,7 @@ def main():
 
     try:
         # Run our pexpect function
-        current_settings, changed, logfile = run_pexpect(commands, options, host, ssh_user, ssh_pass, time)
+        current_settings, changed, logfile = run_pexpect(commands, options, host, ssh_user, ssh_pass, timeparam)
         # Exit on success and pass back objects to ansible, which are available as registered vars
         module.exit_json(changed=changed, current_settings=current_settings, logfile=logfile)
     # Use python exception handling to keep all our failure handling in our main function
@@ -125,6 +125,7 @@ def main():
         module.fail_json(msg="pexpect.exceptions.{0}: {1}".format(type(err).__name__, err))
     except RuntimeError as err:
         module.fail_json(msg="{0}".format(err))
+    sys.exit()
 
 def run_pexpect(commands, options, host, ssh_user, ssh_pass, time):
     #import pexpect
@@ -146,7 +147,9 @@ def run_pexpect(commands, options, host, ssh_user, ssh_pass, time):
     #ssh_pass='kS6n3GWS1xkr'
     child = pexpect.spawn('/usr/bin/plink -ssh {0}@{1}'.format(ssh_user,host), encoding='utf_8')
     #child = pexpect.spawn('/usr/bin/plink -ssh mng_reti@172.30.16.196')
-    child.logfile = sys.stdout
+    logf = open("/home/max/ansible/module/filelog" , "w")
+    #child.logfile = sys.stdout
+    child.logfile = logf
     child.delaybeforesend = 1
     try:
         child.expect('Continue')
@@ -187,19 +190,25 @@ def run_pexpect(commands, options, host, ssh_user, ssh_pass, time):
     except:
         print('unable to continue')
     child.expect('#')
-    filelog = open("/home/max/ansible/module/filelog" , "w")
+    #filelog = open("/home/max/ansible/module/filelog" , "w")
     #child.expect("Press any key to continue")
     #time.sleep(2)
     #child.logfile = sys.stdout
     temp_status = []
     for command in commands:
         child.sendline(command)
-        i = child.expect([r'ERROR.+?does not exist', r'ERROR.+?$', '#'])
+        #time.sleep(2)
+        #i = child.expect([r'ERROR.+?does not exist', r'ERROR.+?$', '#'])
+        i=child.expect ([pexpect.TIMEOUT, pexpect.EOF], timeout=2)
         if i == 0:
+            current_settings = child.before
+            print (child.before)
+            if child.before:
+                child.expect (r'.+')
         # Attempt to intelligently add items that may have multiple instances and are missing
         # e.g. "socket.2" may need "add socket" run before it.
         # Try to allow the user just to use the set command and run add as needed
-            try:
+            '''try:
                 new_item = child.after.split('"')[1].split('.')[0]
             except IndexError:
                 raise RuntimeError("ERROR: unable to automatically add new item in myscript,"
@@ -221,10 +230,11 @@ def run_pexpect(commands, options, host, ssh_user, ssh_pass, time):
         elif i == 2:
             # Set timeout shorter for final commands
             #changed = True
-            #current_settings = child.before.strip()
-            temp_status.append(child.before.strip())
-            print((child.before), file=filelog)
-            print(child.before.strip())
+            current_settings = child.before
+            print (child.before)
+            if child.before:
+                child.expect (r'.+')'''
+            #print((child.before), file=filelog)
             #child.timeout = 1
             # If we processed any commands run the save function last
     #time.slee(5)
@@ -243,18 +253,15 @@ def run_pexpect(commands, options, host, ssh_user, ssh_pass, time):
         elif i == 2:
             break'''
             # Always print out the config data from out script and return it to the user
-    child.sendline('\r\n')
+    child.sendline('\r')
     child.expect('#')
     # Note that child.before contains the output from the last expected item and this expect
-    #temp_status.append(child.before.strip())
-    print((child.before), file=filelog)
-    current_settings = temp_status
-    #current_settings = child.before
-    #logfile = open("/var/log/ansible.log" , "a+")
-    #logfile.write(filelog.read())
-    logfile = "/var/log/ansible.log"
-    #logfile.close()
-    filelog.close()
+    #current_settings = child.before.strip()
+    #print((child.before), file=filelog)
+    #print
+    #logfile = "/var/log/ansible.log"
+    logfile = "/home/max/ansible/module/filelog"
+    #filelog.close()
     # Run the 'exit' command that is inside myscript
     child.sendline('exit')
     # Look for a linux prompt to see if we quit
@@ -263,7 +270,8 @@ def run_pexpect(commands, options, host, ssh_user, ssh_pass, time):
     child.expect(r'y/n')
     child.sendline("y")
     #exit_status = child.before.split('\r\n')[1].strip()
-    pass
+    #pass
+    logf.close()
     child.close()
     #sys.exit()
     return current_settings, changed, logfile
