@@ -41,3 +41,25 @@ test:
     hosts:
           user_R:
                   ansible_host: "172.30.16.197"
+lazzold:
+  hosts:
+    swt-lazz-15-1:
+      ansible_host: "172.30.16.190"
+    swt-lazz11-2:
+      ansible_host: "172.30.16.191"
+    swt-lazz12-2:
+      ansible_host: "172.30.16.192"
+    swt-lazz14-1:
+      ansible_host: "172.30.16.193"
+    swt-lazz13-1:
+      ansible_host: "172.30.16.194"
+    swt-lazz12-1:
+      ansible_host: "172.30.16.195"
+    swt-lazz11-1:
+      ansible_host: "172.30.16.196"
+    swt-lazz4-1:
+      ansible_host: "172.30.16.197"
+    swt-lazz2-1:
+      ansible_host: "172.30.16.198"
+    swt-lazz1-1:
+      ansible_host: "172.30.16.199"
