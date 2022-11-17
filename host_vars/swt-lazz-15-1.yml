@@ -1,1 +1,6 @@
-swt-lazz-15-1:
+---
+loop_protect:
+  - A2-A4
+  - B1-B24
+  - C1-C24
+  - D1-D24
