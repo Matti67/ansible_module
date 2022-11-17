@@ -39,8 +39,9 @@ ue5:
       ansible_host: "172.30.61.57"
 test:
     hosts:
-          user_R:
-            ansible_host: "172.30.16.193"
+          #user_R:
+          SWT-CESU-LAB:
+            ansible_host: "172.30.42.96"
 lazzold:
     hosts:
         swt-lazz-15-1:
