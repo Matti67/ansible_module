@@ -64,3 +64,41 @@ lazzold:
           ansible_host: "172.30.16.198"
         swt-lazz1-1:
           ansible_host: "172.30.16.199"
+        swt-lazzA-1:
+          ansible_host: "172.30.16.200"
+ue4:
+  hosts:
+    SW-BO-NAV-UE4-A01:
+      ansible_host: "172.30.28.1"
+    SW-BO-NAV-UE4-A01-2:
+      ansible_host: "172.30.28.2"
+    SW-BO-NAV-UE4-A03:
+      ansible_host: "172.30.28.3"
+    SW-BO-NAV-UE4-C01-VID:
+      ansible_host: "172.30.28.4"
+    SW-BO-NAV-UE4-A05:
+      ansible_host: "172.30.28.8"
+    SW-BO-NAV-UE4-A06:
+      ansible_host: "172.30.28.9"
+    SW-BO-NAV-UE4-B01:
+      ansible_host: "172.30.28.10"
+    SW-BO-NAV-UE4-B02:
+      ansible_host: "172.30.28.11"
+    SW-BO-NAV-UE4-B02-VID:
+      ansible_host: "172.30.28.12"
+    SW-BO-NAV-UE4-B03:
+      ansible_host: "172.30.28.13"
+    SW-BO-NAV-UE4-B05:
+      ansible_host: "172.30.28.15"
+    SW-BO-NAV-UE4-C01:
+      ansible_host: "172.30.28.16"
+    SW-BO-NAV-UE4-C02:
+      ansible_host: "172.30.28.17"
+    SW-BO-NAV-UE4-C03:
+      ansible_host: "172.30.28.18"
+    SW-BO-NAV-UE4-C04:
+      ansible_host: "172.30.28.20"
+    SW-BO-NAV-UE4-C05:
+      ansible_host: "172.30.28.21"
+    SW-BO-NAV-UE4-C06:
+      ansible_host: "172.30.28.22"

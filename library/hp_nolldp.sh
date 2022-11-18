@@ -99,9 +99,18 @@ do
 # fi
   elif [[ ${fileItem[$i]:0:1} =~ [a-zA-Z] && ${fileItem[$i]:1:1} =~ [0-9] ]]; then
     if [[ $initial == zero ]]; then
-      initial=$fileItem;
-      last=${fileItem[$i+1]};
-      MOD=$(expr $MOD + 1);
+      if [[ ${fileItem[$i]:0:1} == ${fileItem[$i+1]:0:1} ]]; then
+        initial=$fileItem;
+        last=${fileItem[$i+1]};
+        MOD=$(expr $MOD + 1);
+      else
+        echo "$fileItem" | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
+        COUNT=$(expr $COUNT + 1);
+        initial=${fileItem[$i+1]};
+        last=${fileItem[$i+1]};
+        echo "$COUNT" &> $path/Eth_int;
+        MOD=0;  
+      fi
     else
      if [[ ${fileItem[$i]:0:1} == ${fileItem[$i+1]:0:1} && ${fileItem[$i+1]:1:1} =~ [0-9] ]]; then
         last=${fileItem[$i+1]};
