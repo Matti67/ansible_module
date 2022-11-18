@@ -73,33 +73,7 @@ do
 #first statment check if first line character is a number
   #if ! (( $(grep -c '\/' ${fileItem[$i]:1:1}) == 0 )); then
   #if ! [[ ${fileItem[$i]:1:1} =~ '/' ]]; then
-  if [[ ${fileItem[$i]:0:1} =~ [0-9]  ]] && (( $(grep -c '\/' ${fileItem[$i]:1:1}) == 1 )); then
-    #second if condition set initial to first line character (if initial==zero)
-    if [[ $initial == zero ]]; then
-      initial=$fileItem;
-      last=${fileItem[$i]};
-    else
-    if [[ ${fileItem[$i]:0:1} =~ [0-9] && ${fileItem[$i+1]:0:1} =~ [0-9] ]]; then
-      last=${fileItem[$i+1]};
-    else
-      echo "$initial-$last" | sed -e 's/\(^\)\(.*$\)/  - \1\2/g' &>>$verpath;
-      COUNT=$(expr $COUNT + 1);
-      initial=${fileItem[$i+1]};
-      echo "$COUNT" &> $path/Eth_int;
-      #
-    #elif [[ ${fileItem[$i+1]:0:1} =~ [0-9] && ${fileItem[$i+1]:0:1} =~ [a-zA-Z] ]]; then
-        #statements
-      #statements
-    #now is time to build camp var with elements
-#   else
-      #  echo "$initial-$last" &>> camp$COUNT;
-      #  COUNT=$(expr $COUNT + 1);
-      #  initial=${fileItem[$i+1]};
-    fi
-  fi
-  #fi
-#   fi
-  elif [[ ${fileItem[$i]:0:1} =~ [a-zA-Z] && ${fileItem[$i]:1:1} =~ [0-9] ]]; then
+  if [[ ${fileItem[$i]:0:1} =~ [a-zA-Z] && ${fileItem[$i]:1:1} =~ [0-9] ]]; then
     if [[ $initial == zero ]]; then
       if [[ ${fileItem[$i]:0:1} == ${fileItem[$i+1]:0:1} ]]; then
         initial=$fileItem;
@@ -209,6 +183,30 @@ do
      #MOD=0;
     fi
   #fi
+  elif [[ ${fileItem[$i]:0:1} =~ [0-9]  ]]; then
+    #second if condition set initial to first line character (if initial==zero)
+    if [[ $initial == zero ]]; then
+      initial=$fileItem;
+      last=${fileItem[$i]};
+    else
+    if [[ ${fileItem[$i]:0:1} =~ [0-9] && ${fileItem[$i+1]:0:1} =~ [0-9] ]]; then
+      last=${fileItem[$i+1]};
+    else
+      echo "$initial-$last" | sed -e 's/\(^\)\(.*$\)/  - \1\2/g' &>>$verpath;
+      COUNT=$(expr $COUNT + 1);
+      initial=${fileItem[$i+1]};
+      echo "$COUNT" &> $path/Eth_int;
+      #
+    #elif [[ ${fileItem[$i+1]:0:1} =~ [0-9] && ${fileItem[$i+1]:0:1} =~ [a-zA-Z] ]]; then
+        #statements
+      #statements
+    #now is time to build camp var with elements
+#   else
+      #  echo "$initial-$last" &>> camp$COUNT;
+      #  COUNT=$(expr $COUNT + 1);
+      #  initial=${fileItem[$i+1]};
+    fi
+  fi
   elif [[ ${fileItem[$i]:0:1} =~ [tT] && ${fileItem[$i]:1:1} =~ [rR] ]]; then
     if [[ $initial == zero ]]; then
       initial=$fileItem;

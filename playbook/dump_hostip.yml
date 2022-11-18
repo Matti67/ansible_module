@@ -1,0 +1,12 @@
+---
+   - name: capture host ip
+     hosts: SW-BO-NAV-UE5-2-1
+     gather_facts: no
+     connection: network_cli
+
+     tasks:
+
+       - name: Display all variables/facts known for a host
+         debug:
+           var: ansible_host
+         tags: debug_info

@@ -1,6 +1,6 @@
 ---
   - name: execute a script to add vars on proper .yml file inside host_vars folder
-    hosts: ue4
+    hosts: lazzold
     become_user: root
     connection: local
     tasks:
