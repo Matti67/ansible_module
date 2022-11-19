@@ -53,6 +53,7 @@ rm -f $path/int*;
 rm -f $path/lldp_i*;
 rm -f $path/Eth_int;
 rm -f $path/camp*;
+rm -f $path/add_camp*;
 #
 verpath=/home/massimiliano/ansible_module/host_vars/$hostname.yml;
 if [[ -e "$verpath" ]];then
@@ -81,6 +82,7 @@ do
         MOD=$(expr $MOD + 1);
       else
         echo "$fileItem" | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
+        echo "$fileItem" &>>$path/camp$COUNT;
         COUNT=$(expr $COUNT + 1);
         initial=${fileItem[$i+1]};
         last=${fileItem[$i+1]};
@@ -116,9 +118,10 @@ do
         #  #MOD=0;
         #fi'''
         echo "$initial-$last" | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
-          COUNT=$(expr $COUNT + 1);
-          initial=${fileItem[$i+1]};
-          echo "$COUNT" &> $path/Eth_int;
+        echo "$initial-$last" &>>$path/camp$COUNT;
+        COUNT=$(expr $COUNT + 1);
+        initial=${fileItem[$i+1]};
+        echo "$COUNT" &> $path/Eth_int;
         MOD=0;  
       #next condition try to verify if next line character is a number if so set last var
      fi
@@ -133,6 +136,7 @@ do
         MOD=$(expr $MOD + 1);
       else
         echo "$fileItem" | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
+        echo "$fileItem" &>>$path/camp$COUNT;
         COUNT=$(expr $COUNT + 1);
         initial=${fileItem[$i+1]};
         last=${fileItem[$i+1]};
@@ -145,6 +149,7 @@ do
         MOD=$(expr $MOD + 1);
      else
         echo "$initial-$last" | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
+        echo "$initial-$last" &>>$path/camp$COUNT;
           COUNT=$(expr $COUNT + 1);
           initial=${fileItem[$i+1]};
           echo "$COUNT" &> $path/Eth_int;
@@ -162,6 +167,7 @@ do
         MOD=$(expr $MOD + 1);
       else
         echo "$fileItem" | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
+        echo "$fileItem" &>>$path/camp$COUNT;
         COUNT=$(expr $COUNT + 1);
         initial=${fileItem[$i+1]};
         last=${fileItem[$i+1]};
@@ -174,6 +180,7 @@ do
         MOD=$(expr $MOD + 1);
      else
         echo "$initial-$last" | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
+        echo "$initial-$last" &>>$path/camp$COUNT;
           COUNT=$(expr $COUNT + 1);
           initial=${fileItem[$i+1]};
           echo "$COUNT" &> $path/Eth_int;
@@ -193,6 +200,7 @@ do
       last=${fileItem[$i+1]};
     else
       echo "$initial-$last" | sed -e 's/\(^\)\(.*$\)/  - \1\2/g' &>>$verpath;
+      echo "$initial-$last" &>>$path/camp$COUNT;
       COUNT=$(expr $COUNT + 1);
       initial=${fileItem[$i+1]};
       echo "$COUNT" &> $path/Eth_int;
@@ -214,6 +222,7 @@ do
       #statements
     #now is time to build camp var with elements
       echo "$initial" | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
+      echo "$initial" &>>$path/camp$COUNT;
       COUNT=$(expr $COUNT + 1);
       initial=${fileItem[$i+1]};
       echo "$COUNT" &> $path/Eth_int;
@@ -221,3 +230,47 @@ do
      fi
   fi
 done
+file5=$(cat  /home/massimiliano/ansible_module/procurve/Eth_int |tr "\n" " ")
+Lengtz1=($file5)
+echo $Lengtz1;
+#fileItem=($file)
+#Length=${#fileItem[@]}
+#path="/home/massimiliano"
+virg=","
+#camp=camp
+for (( i = 0; i < Lengtz1; ++ i ));
+do
+  camp=$(cat  /home/massimiliano/ansible_module/procurve/camp$i)
+  COUNT=$(expr $i + 1)
+  if [[ $COUNT < $Lengtz1  ]]; then
+    #camp += ',';
+    echo $camp$virg &>>$path/add_camp;
+  else
+    echo $camp &>>$path/add_camp;
+  fi
+done
+awk '
+{
+    for (i=1; i<=NF; i++)  {
+        a[NR,i] = $i
+    }
+}
+NF>p { p = NF }
+END {
+    for(j=1; j<=p; j++) {
+        str=a[1,j]
+        for(i=2; i<=NR; i++){
+            str=str" "a[i,j];
+        }
+        print str
+    }
+}' $path/add_camp &>> $path/add_camp2
+tr -d ' ' < $path/add_camp2 > $path/add_camp3
+#
+#source $script_path2;
+ports=$(cat /home/massimiliano/ansible_module/procurve/add_camp3)
+echo $ports;
+echo "ports:" &>>$verpath;
+echo "$ports" | sed -e 's/\(^\)\(.*\)/  host_ports: \1\2/g' &>>$verpath;
+#echo $ports;
+cat /home/massimiliano/ansible_module/templates/temp_aruba &>>$verpath;

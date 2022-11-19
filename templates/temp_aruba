@@ -1,14 +1,3 @@
----
-loop_protect:
-  - 1/1-1/48
-  - 1/A2-1/A4
-  - 2/1-2/48
-  - 2/A1-2/A4
-  - 3/1-3/48
-  - 3/A2-3/A4
-  - Trk1
-ports:
-  host_ports: 1/1-1/48,1/A2-1/A4,2/1-2/48,2/A1-2/A4,3/1-3/48,3/A2-3/A4,Trk1
 vlans:
     '1':
       id: '1'
@@ -32,7 +21,7 @@ vlans:
       id: '2109'
       name: MANAGEMENT
       ports_tagged: Trk1
-      ports_untagged: 1/1-1/5
+      ports_untagged: C1-C6,Trk1
       vlan_voice: no voice
     '2110':
       id: '2110'

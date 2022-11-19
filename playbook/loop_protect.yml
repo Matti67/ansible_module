@@ -1,7 +1,7 @@
 ---
 
   - name: DEPLOY LOOP PROTECT CONFIGURATION ON PROCURVE SWITCH
-    hosts: SWT-CESU-LAB
+    hosts: ue4
     gather_facts: no
     connection: local
 
