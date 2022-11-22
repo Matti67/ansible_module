@@ -9,7 +9,7 @@ export ip
 sp=" "
 trat="-"
 echo $ip;
-path="/home/massimiliano/ansible_module/procurve"
+path="/home/max/ansible/module/procurve"
 rm -f $path/rem*;
 rm -f $path/int*;
 rm -f $path/lldp_i*;
@@ -18,17 +18,17 @@ rm -f $path/camp*;
 rm -f $path/add_camp*;
 rm -f $path/count*;
 rm -f $path/ports*;
-#file2=$(cat  /home/massimiliano/ansible/procurve/int_up |tr "\n" " ")
-#path="/home/massimiliano/ansible_module/procurve"
+#file2=$(cat  /home/max/ansible/procurve/int_up |tr "\n" " ")
+#path="/home/max/ansible/module/procurve"
 snmpwalk -v 2c -c pubrim $ip .1.3.6.1.2.1.2.2.1.2\
  | sed -n -e 's/^.*STRING: //p' &>> "$path"/int; 
-file1=$(cat  /home/massimiliano/ansible_module/procurve/int |tr "\n" " ")
+file1=$(cat  /home/max/ansible/module/procurve/int |tr "\n" " ")
 snmpwalk -v 2c -c pubrim $ip .1.3.6.1.2.1.2.2.1.8\
  | sed -n -e 's/^.*INTEGER: //p' &>> "$path"/int_up; 
-file2=$(cat  /home/massimiliano/ansible_module/procurve/int_up |tr "\n" " ")
+file2=$(cat  /home/max/ansible/module/procurve/int_up |tr "\n" " ")
 snmpbulkwalk -v 2c -c pubrim $ip 1.0.8802.1.1.2.1.4.1.1.9\
 | sed -n -e 's/^.*\.\(.*\)\.\(.* =.*\).*\(SW\|SWT\|sw\|swt\).*$/\1/p' &>> "$path"/rem_id;
-file3=$(cat  /home/massimiliano/ansible_module/procurve/rem_id |tr "\n" " ")
+file3=$(cat  /home/max/ansible/module/procurve/rem_id |tr "\n" " ")
 hostname=$(snmpget -v 2c -c pubrim $ip sysName.0 | sed -n -e 's/^.*STRING: //p')
 lldpItem=($file3)
 Lengthid=${#lldpItem[@]}
@@ -72,7 +72,7 @@ Length=${#fileItem[@]}
 echo "$Length";
 echo $file1
 #the following it's been commented (see the script master)
-##verpath=/home/massimiliano/ansible_module/host_vars/$hostname.yml;
+##verpath=/home/max/ansible/module/host_vars/$hostname.yml;
 ##if [[ -e "$verpath" ]];then
 ##	msg="the file in host_vars folder must not be present yet. Exiting"
 ##	exit 0
@@ -83,6 +83,48 @@ echo $file1
 ##  echo "loop_protect:" &>>$verpath;
 ##fi
 ###
+build_range() {
+  local range_start= range_end=
+  local -a result
+
+  end_range() {
+      : range_start="$range_start" range_end="$range_end"
+      [[ $range_start ]] || return
+      if (( range_end == range_start )); then
+        # single number; just add it directly
+        result+=( "$range_start" )
+      elif (( range_end == (range_start + 1) )); then
+        # emit 6,7 instead of 6-7
+        result+=( "$range_start" "$range_end" )
+      else
+        # larger span than 2; emit as start-end
+        result+=( "$range_start-$range_end" )
+      fi
+      range_start= range_end=
+  }
+
+  # use the first number to initialize both values
+  range_start= range_end=
+  result=( )
+  for number; do
+    : number="$number"
+    if ! [[ $range_start ]]; then
+      range_start=$number
+      range_end=$number
+      continue
+    elif (( number == (range_end + 1) )); then
+      (( range_end += 1 ))
+      continue
+    else
+      end_range
+      range_start=$number
+      range_end=$number
+    fi
+  done
+  end_range
+  (IFS=,; printf '%s\n' "${result[*]}")
+}
+########
 for (( i = 0; i < Length; ++ i ));
 do
   if [[ ${fileItem[$i]:0:1} =~ [a-zA-Z] && ${fileItem[$i]:1:1} =~ [0-9] ]]; then
@@ -218,7 +260,7 @@ Length2=($file8)
 echo $Length2;
 #fileItem=($file)
 #Length=${#fileItem[@]}
-#path="/home/massimiliano"
+#path="/home/max"
 virg=','
 camp=0
 file7=$(cat  $path/count_int |tr "\n" " ")
@@ -237,20 +279,13 @@ do
   #if [[ $COUNT < $Length2  ]]; then
   #echo $camp;
   #export camp
-  echo $camp | sed -e '$!s/$/,/' &>>$path/add_camp$i;
+  #######echo $camp | sed -e '$!s/$/,/' &>>$path/add_camp$i;
   #else
   #  echo $camp &>>$path/add_camp$i;
   #fi
-  tr -d '\n' < $path/add_camp$i > $path/ports$i
-  sed -i 's/ /, /g' $path/ports$i
+  #######tr -d '\n' < $path/add_camp$i > $path/ports$i
+  #######sed -i 's/ /, /g' $path/ports$i
   #source $script_path2;
-  echo $ports$i;
-  awk -F',' '{
-                r = nxt = 0; 
-                for (j=1; j<=NF; j++) 
-                    if ($j+1 == $(j+1)){ if (!r) r = $j"-"; nxt = $(j+1) } 
-                    else { printf "%s%s", (r)? r nxt : $j, (j == NF)? ORS : FS; r = 0 }
-           }' <<< $path/ports$i &>> host_ports$i
-  #
+  #######echo $ports$i;
 done
 #rm -f $path/ports*
