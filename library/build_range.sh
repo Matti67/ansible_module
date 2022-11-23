@@ -1,5 +1,5 @@
 #!/bin/bash
-path="/home/max/ansible/module/procurve"
+path="/home/massimiliano/ansible_module/procurve"
 rm -f $path/int*;
 rm -f $path/res*;
 rm -f $path/ports;
@@ -49,7 +49,7 @@ Length2=($file8)
 echo $Length2;
 #fileItem=($file)
 #Length=${#fileItem[@]}
-#path="/home/max"
+#path="/home/massimiliano"
 virg=','
 #fileItem=($file8)
 #echo $file1
@@ -93,7 +93,7 @@ do
     val=0;
     letter=${intItem[1]:0:1}
     eval "letter=letter$i"
-    echo $camp | sed -e "s/^.\///g" &> $path/integer;
+    echo $camp | sed -e "s/[1-9]\///g" &> $path/integer;
     cat $path/integer | tr " " "," &> $path/intg;
     in_intg=$(cat $path/intg)
     IFS=, read -r -a numbers <<< "$in_intg"
@@ -109,7 +109,7 @@ do
     val=0;
     letter=${intItem[1]:0:1}
     eval "letter=letter$i"
-    echo $camp | sed -e "s/^.\/.//g" &> $path/integer;
+    echo $camp | sed -e "s/[1-9]\/[A-Z]//g" &> $path/integer;
     cat $path/integer | tr " " "," &> $path/intg;
     in_intg=$(cat $path/intg)
     IFS=, read -r -a numbers <<< "$in_intg"
