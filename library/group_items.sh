@@ -17,7 +17,7 @@ echo $Length2;
 #path="/home/max"
 virg=','
 #camp=0
-#file7=$(cat  $path/count_int |tr "\n" " ")
+file7=$(cat  $path/count_int |tr "\n" " ")
 #remcount=($file7)
 #echo $file7
 for (( i = 0; i < Length2; ++ i ));

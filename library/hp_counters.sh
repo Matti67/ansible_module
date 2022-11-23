@@ -255,37 +255,37 @@ do
      fi
   fi
 done
-file8=$(cat  $path/Eth_int |tr "\n" " ")
-Length2=($file8)
-echo $Length2;
-#fileItem=($file)
-#Length=${#fileItem[@]}
-#path="/home/max"
-virg=','
-camp=0
-file7=$(cat  $path/count_int |tr "\n" " ")
-remcount=($file7)
-echo $file7
-for (( i = 0; i < Length2; ++ i ));
-do
-  camp=$(cat  $path/camp$i)
-  for del in ${file7[@]}
-  do
-    camp=("${camp[@]/$del}") #Quotes when working with strings
-    echo $camp
-    #export camp;
-  done
-  COUNT=$(expr $i + 1)
-  #if [[ $COUNT < $Length2  ]]; then
-  #echo $camp;
-  #export camp
-  #######echo $camp | sed -e '$!s/$/,/' &>>$path/add_camp$i;
-  #else
-  #  echo $camp &>>$path/add_camp$i;
-  #fi
-  #######tr -d '\n' < $path/add_camp$i > $path/ports$i
-  #######sed -i 's/ /, /g' $path/ports$i
-  #source $script_path2;
-  #######echo $ports$i;
-done
-#rm -f $path/ports*
+#file8=$(cat  $path/Eth_int |tr "\n" " ")
+#Length2=($file8)
+#echo $Length2;
+##fileItem=($file)
+##Length=${#fileItem[@]}
+##path="/home/max"
+#virg=','
+#camp=0
+#file7=$(cat  $path/count_int |tr "\n" " ")
+#remcount=($file7)
+#echo $file7
+#for (( i = 0; i < Length2; ++ i ));
+#do
+#  camp=$(cat  $path/camp$i)
+#  for del in ${file7[@]}
+#  do
+#    camp=("${camp[@]/$del}") #Quotes when working with strings
+#    echo $camp
+#    #export camp;
+#  done
+#  COUNT=$(expr $i + 1)
+#  #if [[ $COUNT < $Length2  ]]; then
+#  #echo $camp;
+#  #export camp
+#  #######echo $camp | sed -e '$!s/$/,/' &>>$path/add_camp$i;
+#  #else
+#  #  echo $camp &>>$path/add_camp$i;
+#  #fi
+#  #######tr -d '\n' < $path/add_camp$i > $path/ports$i
+#  #######sed -i 's/ /, /g' $path/ports$i
+#  #source $script_path2;
+#  #######echo $ports$i;
+#done
+##rm -f $path/ports*
