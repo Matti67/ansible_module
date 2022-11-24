@@ -1,0 +1,32 @@
+---
+  - name: execute a script to add vars on proper .yml file inside host_vars folder
+    hosts: ue4
+    become_user: root
+    connection: local
+    tasks:
+    - command: sh ../library/hp_nolldp2.sh {{ ansible_host }}
+      vars:
+        ip: "{{ ansible_host }}"
+    #  register: results
+      tags: buildvars1
+
+    #- debug:
+    #    var: results.stdout
+
+    - command: sh ../library/hp_counters.sh {{ ansible_host }}
+      vars:
+        ip: "{{ ansible_host }}"
+    #  register: resultlast
+      tags: buildvars2
+
+    #- debug:
+    #    var: resultlast.stdout
+
+    - command: sh ../library/int_range.sh {{ ansible_host }}
+      vars:
+        ip: "{{ ansible_host }}"
+    #  register: resultlast
+      tags: deploy
+
+    #- debug:
+    #    var: resultlast.stdout

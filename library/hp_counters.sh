@@ -9,7 +9,7 @@ export ip
 sp=" "
 trat="-"
 echo $ip;
-path="/home/massimiliano/ansible_module/procurve"
+path="/home/max/ansible/module/procurve"
 rm -f $path/rem*;
 rm -f $path/int*;
 rm -f $path/lldp_i*;
@@ -18,17 +18,17 @@ rm -f $path/camp*;
 rm -f $path/add_camp*;
 rm -f $path/count*;
 rm -f $path/ports*;
-#file2=$(cat  /home/massimiliano/ansible/procurve/int_up |tr "\n" " ")
-#path="/home/massimiliano/ansible_module/procurve"
+#file2=$(cat  /home/max/ansible/procurve/int_up |tr "\n" " ")
+#path="/home/max/ansible/module/procurve"
 snmpwalk -v 2c -c pubrim $ip .1.3.6.1.2.1.2.2.1.2\
  | sed -n -e 's/^.*STRING: //p' &>> "$path"/int; 
-file1=$(cat  /home/massimiliano/ansible_module/procurve/int |tr "\n" " ")
+file1=$(cat  /home/max/ansible/module/procurve/int |tr "\n" " ")
 snmpwalk -v 2c -c pubrim $ip .1.3.6.1.2.1.2.2.1.8\
  | sed -n -e 's/^.*INTEGER: //p' &>> "$path"/int_up; 
-file2=$(cat  /home/massimiliano/ansible_module/procurve/int_up |tr "\n" " ")
+file2=$(cat  /home/max/ansible/module/procurve/int_up |tr "\n" " ")
 snmpbulkwalk -v 2c -c pubrim $ip 1.0.8802.1.1.2.1.4.1.1.9\
 | sed -n -e 's/^.*\.\(.*\)\.\(.* =.*\).*\(SW\|SWT\|sw\|swt\).*$/\1/p' &>> "$path"/rem_id;
-file3=$(cat  /home/massimiliano/ansible_module/procurve/rem_id |tr "\n" " ")
+file3=$(cat  /home/max/ansible/module/procurve/rem_id |tr "\n" " ")
 hostname=$(snmpget -v 2c -c pubrim $ip sysName.0 | sed -n -e 's/^.*STRING: //p')
 lldpItem=($file3)
 Lengthid=${#lldpItem[@]}
@@ -39,8 +39,8 @@ while IFS= read -r line; do
   snmpget -v 2c -c pubrim $ip $oid\
   | sed -n -e 's/^.*STRING: //p' &>> "$path"/rem_int;
 done < "$file5"
-snmpwalk -v 2c -c pubrim $ip 1.3.6.1.2.1.31.1.1.1.6\
- |  sed -n -e 's/\(^.*\.\)\(.*\)\( = \)\(Counter64: [1-9].*$\)/\2/p' &>> "$path"/counters;
+snmpwalk -v 2c -c pubrim $ip 1.3.6.1.2.1.2.2.1.16\
+ |  sed -n -e 's/\(^.*\.\)\(.*\)\( = \)\(Counter32: [1-9].*$\)/\2/p' &>> "$path"/counters;
 file6=$path/counters;
 while IFS= read -r line; do
   intid=$(echo "$line");
@@ -72,7 +72,7 @@ Length=${#fileItem[@]}
 echo "$Length";
 echo $file1
 #the following it's been commented (see the script master)
-##verpath=/home/massimiliano/ansible_module/host_vars/$hostname.yml;
+##verpath=/home/max/ansible/module/host_vars/$hostname.yml;
 ##if [[ -e "$verpath" ]];then
 ##	msg="the file in host_vars folder must not be present yet. Exiting"
 ##	exit 0
@@ -260,7 +260,7 @@ done
 #echo $Length2;
 ##fileItem=($file)
 ##Length=${#fileItem[@]}
-##path="/home/massimiliano"
+##path="/home/max"
 #virg=','
 #camp=0
 #file7=$(cat  $path/count_int |tr "\n" " ")

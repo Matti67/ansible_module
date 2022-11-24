@@ -273,4 +273,4 @@ echo $ports;
 echo "ports:" &>>$verpath;
 echo "$ports" | sed -e 's/\(^\)\(.*\)/  host_ports: \1\2/g' &>>$verpath;
 #echo $ports;
-cat /home/max/ansible/module/templates/temp_aruba &>>$verpath;
+#cat /home/max/ansible/module/templates/temp_aruba &>>$verpath;
