@@ -1,5 +1,5 @@
 #!/bin/bash
-path="/home/max/ansible/module/procurve"
+path="/home/massimiliano/ansible_module/procurve"
 rm -f $path/int*;
 rm -f $path/res*;
 rm -f $path/ports;
@@ -53,15 +53,15 @@ echo $Length2;
 hostname=$(snmpget -v 2c -c pubrim $ip sysName.0 | sed -n -e 's/^.*STRING: //p')
 #fileItem=($file)
 #Length=${#fileItem[@]}
-#path="/home/max"
+#path="/home/massimiliano"
 virg=','
-verpath=/home/max/ansible/module/host_vars/$hostname.yml;
+verpath=/home/massimiliano/ansible_module/host_vars/$hostname.yml;
 #chek if int_free was introduced to host_vars yet
-if grep -q int_free "$verbpath"; then
+if grep -q int_free "$verpath"; then
   msg="the int_free field must not be present yet. Exiting"
   exit 0
 else
-  echo "int_free:" &>>$verpath;
+  echo "ports_free:" &>>$verpath;
 fi
 #
 file7=$(cat  $path/count_int |tr "\n" " ")
@@ -93,7 +93,7 @@ do
     #the commented line below works anyway
     #cat $path/result | sed -e "s/\([1-9]\|[1-9][1-9]\)/${intItem[1]:0:1}&/g" &>> $path/ports
     cat $path/result | sed -e "s/\([1-9]\{1,2\}\)/${intItem[1]:0:1}&/g" &>> $path/ports;
-    cat $path/ports | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
+    #cat $path/ports | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
     #cat $path/result;
   elif [[ ${intItem[0]:0:1} =~ [1-9] && ${intItem[0]:1:1} =~ '/' &&  ${intItem[0]:2:1} =~ [1-9] ]]; then
     ength=${#intItem[@]}
@@ -110,7 +110,7 @@ do
     #the commented line below works anyway
     #cat $path/result | sed -e "s/\([1-9]\|[1-9][1-9]\)/${intItem[1]:0:1}&/g" &>> $path/ports
     cat $path/result | sed -e "s/\([1-9]\{1,2\}\)/${intItem[1]:0:1}\/&/g" &>> $path/ports
-    cat $path/ports | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
+    #cat $path/ports | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
   #
   elif [[ ${intItem[0]:0:1} =~ [1-9] && ${intItem[0]:1:1} =~ '/' &&  ${intItem[0]:2:1} =~ [A-Z] ]]; then
     ength=${#intItem[@]}
@@ -127,7 +127,7 @@ do
     #the commented line below works anyway
     #cat $path/result | sed -e "s/\([1-9]\|[1-9][1-9]\)/${intItem[1]:0:1}&/g" &>> $path/ports
     cat $path/result | sed -e "s/\([1-9]\{1,2\}\)/${intItem[0]:0:1}\/${intItem[0]:2:1}&/g" &>> $path/ports
-    cat $path/ports | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
+    #cat $path/ports | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
   elif [[ ${intItem[1]:0:1} =~ [1-9] ]]; then
     ength=${#intItem[@]}
     COUNT=$(expr $i + 1)
@@ -143,8 +143,9 @@ do
     #the commented line below works anyway
     #cat $path/result | sed -e "s/\([1-9]\|[1-9][1-9]\)/${intItem[1]:0:1}&/g" &>> $path/ports
     cat $path/result &>> $path/ports
-    cat $path/ports | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
+    #cat $path/ports | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
   fi
 done
+cat $path/ports | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
 #cat $path/ports;
-#cat /home/max/ansible/module/templates/temp_aruba &>>$verpath;
+cat /home/massimiliano/ansible_module/templates/temp_aruba &>>$verpath;
