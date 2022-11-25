@@ -1,5 +1,5 @@
 #!/bin/bash
-path="/home/massimiliano/ansible_module/procurve"
+path="/home/max/ansible/module/procurve"
 rm -f $path/int*;
 rm -f $path/res*;
 rm -f $path/ports;
@@ -53,9 +53,9 @@ echo $Length2;
 hostname=$(snmpget -v 2c -c pubrim $ip sysName.0 | sed -n -e 's/^.*STRING: //p')
 #fileItem=($file)
 #Length=${#fileItem[@]}
-#path="/home/massimiliano"
+#path="/home/max"
 virg=','
-verpath=/home/massimiliano/ansible_module/host_vars/$hostname.yml;
+verpath=/home/max/ansible/module/host_vars/$hostname.yml;
 #chek if int_free was introduced to host_vars yet
 if grep -q int_free "$verpath"; then
   msg="the int_free field must not be present yet. Exiting"
@@ -148,4 +148,4 @@ do
 done
 cat $path/ports | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
 #cat $path/ports;
-cat /home/massimiliano/ansible_module/templates/temp_aruba &>>$verpath;
+cat /home/max/ansible/module/templates/temp_aruba &>>$verpath;

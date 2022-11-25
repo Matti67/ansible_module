@@ -9,17 +9,17 @@ export ip
 sp=" "
 trat="-"
 echo $ip;
-#file2=$(cat  /home/massimiliano/ansible/procurve/int_up |tr "\n" " ")
-path="/home/massimiliano/ansible_module/procurve"
+#file2=$(cat  /home/max/ansible/procurve/int_up |tr "\n" " ")
+path="/home/max/ansible/module/procurve"
 snmpwalk -v 2c -c pubrim $ip .1.3.6.1.2.1.2.2.1.2\
  | sed -n -e 's/^.*STRING: //p' &>> "$path"/int; 
-file1=$(cat  /home/massimiliano/ansible_module/procurve/int |tr "\n" " ")
+file1=$(cat  /home/max/ansible/module/procurve/int |tr "\n" " ")
 snmpwalk -v 2c -c pubrim $ip .1.3.6.1.2.1.2.2.1.8\
  | sed -n -e 's/^.*INTEGER: //p' &>> "$path"/int_up; 
-file2=$(cat  /home/massimiliano/ansible_module/procurve/int_up |tr "\n" " ")
+file2=$(cat  /home/max/ansible/module/procurve/int_up |tr "\n" " ")
 snmpbulkwalk -v 2c -c pubrim $ip 1.0.8802.1.1.2.1.4.1.1.9\
 | sed -n -e 's/^.*\.\(.*\)\.\(.* =.*\).*\(SW\|SWT\|sw\|swt\).*$/\1/p' &>> "$path"/rem_id;
-file3=$(cat  /home/massimiliano/ansible_module/procurve/rem_id |tr "\n" " ")
+file3=$(cat  /home/max/ansible/module/procurve/rem_id |tr "\n" " ")
 hostname=$(snmpget -v 2c -c pubrim $ip sysName.0 | sed -n -e 's/^.*STRING: //p')
 lldpItem=($file3)
 Lengthid=${#lldpItem[@]}
@@ -36,7 +36,7 @@ done < "$file5"
 #  snmpget -v 2c -c pubrim $ip $oid\
 #   | sed -n -e 's/^.*STRING: //p' &>> "$PATH"/rem_int;
 #done'''
-file4=$(cat  /home/massimiliano/ansible_module/procurve/rem_int |tr "\n" " ")
+file4=$(cat  /home/max/ansible/module/procurve/rem_int |tr "\n" " ")
 remItem=($file4)
 for del in ${file4[@]}
 do
@@ -54,7 +54,7 @@ rm -f $path/lldp_i*;
 rm -f $path/Eth_int;
 rm -f $path/camp*;
 #
-verpath=/home/massimiliano/ansible_module/host_vars/$hostname.yml;
+verpath=/home/max/ansible/module/host_vars/$hostname.yml;
 if [[ -e "$verpath" ]];then
 	msg="the file in host_vars folder must not be present yet. Exiting"
 	exit 0
@@ -68,7 +68,7 @@ fi
 for (( i = 0; i < Length; ++ i ));
 do
 #  echo ${files[$i-1]} ${files[$i]} ${files[$i+1]}
-#file=/home/massimiliano/int
+#file=/home/max/int
 #while read -r line; do
 #first statment check if first line character is a number
   #if ! (( $(grep -c '\/' ${fileItem[$i]:1:1}) == 0 )); then

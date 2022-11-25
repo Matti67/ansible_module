@@ -1,10 +1,10 @@
 #!/bin/bash
-#script name: /home/massimiliano/serial-hp3c.sh
+#script name: /home/max/serial-hp3c.sh
 path="/home/max/ansible/module"
 notav="n/a"
-file=/home/massimiliano/ip_hp3c
-file1=$(cat  /home/massimiliano//ip_hp3c |tr "\n" " ")
-#path="/home/massimiliano/Hp3C_Int/assets"
+file=/home/max/ip_hp3c
+file1=$(cat  /home/max//ip_hp3c |tr "\n" " ")
+#path="/home/max/Hp3C_Int/assets"
 read -p 'Net: ' almanet
 read -p 'firstip: ' firstip
 read -p 'lastip: ' lastip

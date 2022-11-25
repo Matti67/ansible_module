@@ -1,5 +1,5 @@
 #!/bin/bash
-path="/home/massimiliano/ansible_module/procurve"
+path="/home/max/ansible/module/procurve"
 rm -f $path/int*;
 rm -f $path/res*;
 rm -f $path/ports;
@@ -49,7 +49,7 @@ Length2=($file8)
 echo $Length2;
 #fileItem=($file)
 #Length=${#fileItem[@]}
-#path="/home/massimiliano"
+#path="/home/max"
 virg=','
 #fileItem=($file8)
 #echo $file1
