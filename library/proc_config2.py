@@ -251,6 +251,11 @@ def run_pexpect(commands, options, host, ssh_user, ssh_pass, time):
     child.expect('#')
     child.sendline('exit')
     child.expect('#')
+    hostname = child.after
+    child.sendline('\r')
+    child.expect('#')
+    child.sendline("backup startup-configuration to 137.204.22.33 {}".format(hostname.cfg))
+    child.expec('#')
     child.sendline('write memory')
     child.expect('#')
     # Note that child.before contains the output from the last expected item and this expect

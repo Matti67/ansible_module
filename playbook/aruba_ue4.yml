@@ -1,0 +1,28 @@
+---
+
+  - name: DEPLOY LOOP PROTECT CONFIGURATION ON PROCURVE SWITCH
+    hosts: ue4
+    gather_facts: no
+    connection: local
+
+    tasks:
+
+      - name: GENERATE LOOP PROTECT CONFIG FILE
+        template: src=../templates/config_ue4.j2 dest=../configs/config_ue4.cfg
+        tags: build
+
+      #- name: DEPLOY SNMP FROM AUTO-GENERATED FILE
+      #  ios_config:
+      #    src: "../configs/snmp-auto.cfg"
+      #    #provider: "{{ credentials }}"
+      #  notify: save config
+      #  tags: deploy
+
+      - name: "Run myscript to set up loop_protect"
+        aruba_config:
+          src: "../configs/config_ue4.cfg"
+          #host: "{{ ansible_host }}"
+          #ssh_user: "{{ ansible_ssh_user }}"
+          #ssh_pass: "{{ ansible_ssh_pass }}"
+          #timeparam: 10
+        tags: deploy

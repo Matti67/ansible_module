@@ -51,7 +51,8 @@ vlans:
       name: VL_2113-UE4-PRIV-LAB
       ports_tagged: Trk1
       ports_untagged: 'null'
-      vlan_voice: no voiceports_free:
+      vlan_voice: no voice
+ports_free:
   - 1/1-1/48
   - 1/A2-1/A4
   - 2/1-2/48
