@@ -16,6 +16,10 @@ snmpwalk -v 2c -c pubrim $ip .1.3.6.1.2.1.2.2.1.2\
 #
 export list_int=$(cat  /home/max/ansible/module/procurve/int |tr "\n" " ");
 echo $list_int
+#the followings mib's object identifier it is used 
+#for retrieve the list of ports untagged per vlan
+#use instead the oid: .1.3.6.1.2.1.17.7.1.4.3.1.2 if you need 
+#to retrieve the list of ports tagged per vlan
 snmpwalk -v 2c -c pubrim $ip .1.3.6.1.2.1.17.7.1.4.3.1.4 | tr -d "\n" &>> "$path"/untag;
 snmpwalk -v 2c -c pubrim $ip .1.3.6.1.2.1.17.7.1.4.3.1.4\
 | sed -n -e 's/^.*\.\([0-9]\{1,4\}\)\( = Hex-STRING: \)\(.*$\)/\1/p' &>> "$path"/vlans;
