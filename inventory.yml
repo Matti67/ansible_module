@@ -41,7 +41,9 @@ test:
     hosts:
           #user_R:
           SWT-CESU-LAB:
-            ansible_host: "172.30.42.96"
+            ansible_host: "172.30.42.95"
+          SW-2930-dot1x:
+            ansible_host: "172.30.42.94"
 lazzold:
     hosts:
         swt-lazz-15-1:

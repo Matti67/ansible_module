@@ -44,10 +44,10 @@ done < "$file5"
 #done'''
 file4=$(cat  /home/max/ansible/module/procurve/rem_int |tr "\n" " ")
 remItem=($file4)
-#for del in ${file4[@]}
-#do
-#   file1=("${file1[@]/$del}") #Quotes when working with strings
-#done
+for del in ${file4[@]}
+do
+   file1=("${file1[@]/$del}") #Quotes when working with strings
+done
 Lengthrem=${#remItem[@]}
 fileItem=($file1)
 intupItem=($file2)
@@ -63,7 +63,7 @@ else
   #
   touch $verpath;
   echo "---" &>>$verpath;
-  #echo "loop_protect:" &>>$verpath;
+  echo "loop_protect:" &>>$verpath;
 fi
 #
 for (( i = 0; i < Length; ++ i ));
@@ -81,7 +81,7 @@ do
         last=${fileItem[$i+1]};
         MOD=$(expr $MOD + 1);
       else
-        #echo "$fileItem" | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
+        echo "$fileItem" | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
         echo "$fileItem" &>>$path/camp$COUNT;
         COUNT=$(expr $COUNT + 1);
         initial=${fileItem[$i+1]};
@@ -94,7 +94,30 @@ do
         last=${fileItem[$i+1]};
         MOD=$(expr $MOD + 1);
      else
-        #echo "$initial-$last" | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
+        #'''if [ $MOD -lt 5  ]; then
+        #  MODItem=($MOD)
+        #  Length2=${#MODItem[@]}
+        #  for ((j = $MOD; j>=0; j-- )); do
+        #    K=$(expr $i - $j);
+        #    if [[ ${intupItem[$K]} == 'up(1)' ]]; then
+        #      lastup=${fileItem[$K]};
+        #      echo "- $lastup" | sed -e 's/\(^\)\(.*\)/  \1\2/g' &>> $verpath;
+        #      COUNT=$(expr $COUNT + 1);
+        #      echo "$COUNT" &> $path/Eth_int;
+        #    fi
+        #  done
+        #  MOD=0;
+        #  initial=${fileItem[$i+1]};
+        #else
+      #s#tatements
+    #now# is time to build camp var with elements
+        #  echo "- $initial-$last" &sed -e 's/\(^\)\(.*\)/  \1\2/g' >>$verpath;
+        #  COUNT=$(expr $COUNT + 1);
+        #  initial=${fileItem[$i+1]};
+        #  echo "$COUNT" &> $path/Eth_int;
+        #  #MOD=0;
+        #fi'''
+        echo "$initial-$last" | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
         echo "$initial-$last" &>>$path/camp$COUNT;
         COUNT=$(expr $COUNT + 1);
         initial=${fileItem[$i+1]};
@@ -112,7 +135,7 @@ do
         last=${fileItem[$i+1]};
         MOD=$(expr $MOD + 1);
       else
-        #echo "$fileItem" | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
+        echo "$fileItem" | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
         echo "$fileItem" &>>$path/camp$COUNT;
         COUNT=$(expr $COUNT + 1);
         initial=${fileItem[$i+1]};
@@ -125,7 +148,7 @@ do
         last=${fileItem[$i+1]};
         MOD=$(expr $MOD + 1);
      else
-        #echo "$initial-$last" | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
+        echo "$initial-$last" | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
         echo "$initial-$last" &>>$path/camp$COUNT;
           COUNT=$(expr $COUNT + 1);
           initial=${fileItem[$i+1]};
@@ -143,7 +166,7 @@ do
         last=${fileItem[$i+1]};
         MOD=$(expr $MOD + 1);
       else
-        #echo "$fileItem" | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
+        echo "$fileItem" | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
         echo "$fileItem" &>>$path/camp$COUNT;
         COUNT=$(expr $COUNT + 1);
         initial=${fileItem[$i+1]};
@@ -156,7 +179,7 @@ do
         last=${fileItem[$i+1]};
         MOD=$(expr $MOD + 1);
      else
-        #echo "$initial-$last" | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
+        echo "$initial-$last" | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
         echo "$initial-$last" &>>$path/camp$COUNT;
           COUNT=$(expr $COUNT + 1);
           initial=${fileItem[$i+1]};
@@ -176,7 +199,7 @@ do
     if [[ ${fileItem[$i]:0:1} =~ [0-9] && ${fileItem[$i+1]:0:1} =~ [0-9] ]]; then
       last=${fileItem[$i+1]};
     else
-      #echo "$initial-$last" | sed -e 's/\(^\)\(.*$\)/  - \1\2/g' &>>$verpath;
+      echo "$initial-$last" | sed -e 's/\(^\)\(.*$\)/  - \1\2/g' &>>$verpath;
       echo "$initial-$last" &>>$path/camp$COUNT;
       COUNT=$(expr $COUNT + 1);
       initial=${fileItem[$i+1]};
@@ -198,7 +221,7 @@ do
     else
       #statements
     #now is time to build camp var with elements
-      #echo "$initial" | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
+      echo "$initial" | sed -e 's/\(^\)\(.*\)/  - \1\2/g' &>>$verpath;
       echo "$initial" &>>$path/camp$COUNT;
       COUNT=$(expr $COUNT + 1);
       initial=${fileItem[$i+1]};

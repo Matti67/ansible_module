@@ -4,29 +4,43 @@
     become_user: root
     connection: local
     tasks:
-    - command: sh ../library/hp_nolldp2.sh {{ ansible_host }}
-      vars:
-        ip: "{{ ansible_host }}"
-    #  register: results
-      tags: buildvars1
 
-    #- debug:
-    #    var: results.stdout
+      - name: Generate a list of total device's interfaces
+        command: sh ../library/hp_nolldp2.sh {{ ansible_host }}
+        vars:
+          ip: "{{ ansible_host }}"
+      #  register: results
+        tags: buildvars1
 
-    - command: sh ../library/hp_counters.sh {{ ansible_host }}
-      vars:
-        ip: "{{ ansible_host }}"
-    #  register: resultlast
-      tags: buildvars2
+      #- debug:
+      #    var: results.stdout
+      - name: Generate all the facts needed for the task after this one
+        command: sh ../library/hp_counters.sh {{ ansible_host }}
+        vars:
+          ip: "{{ ansible_host }}"
+      #  register: results
+        tags: prebuild2
 
-    #- debug:
-    #    var: resultlast.stdout
+      #- debug:
+      #    var: results.stdout
 
-    - command: sh ../library/int_range.sh {{ ansible_host }}
-      vars:
-        ip: "{{ ansible_host }}"
-    #  register: resultlast
-      tags: deploy
+      - name: Generate a list of interfaces\
+              avoiding ports that from lldp are connected to remote hosts
+        command: sh ../library/hp_nolldp4.sh {{ ansible_host }}
+        vars:
+          ip: "{{ ansible_host }}"
+      #  register: resultlast
+        tags: buildvars2
+
+      #- debug:
+      #    var: resultlast.stdout
+
+      - name: Generate a list of interfaces free  by counters and optionaly the vlan template
+        command: sh ../library/int_range.sh {{ ansible_host }}
+        vars:
+          ip: "{{ ansible_host }}"
+      #  register: resultlast
+        tags: deploy
 
     #- debug:
     #    var: resultlast.stdout

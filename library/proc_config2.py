@@ -145,6 +145,8 @@ def run_pexpect(commands, options, host, ssh_user, ssh_pass, time):
     #ssh_user='mng_reti'
     #host='172.30.16.196'
     #ssh_pass='kS6n3GWS1xkr'
+    getName =  subprocess.Popen("snmpget -v 2c -c pubrim {} sysName.0 | sed -n -e 's/^.*STRING: //p'".format(host), shell=True, stdout=subprocess.PIPE).stdout
+    hostname =  getName.read()
     child = pexpect.spawn('/usr/bin/plink -ssh {0}@{1}'.format(ssh_user,host), encoding='utf_8')
     #child = pexpect.spawn('/usr/bin/plink -ssh mng_reti@172.30.16.196')
     logf = open("/home/max/ansible/module/filelog" , "w")
@@ -251,11 +253,11 @@ def run_pexpect(commands, options, host, ssh_user, ssh_pass, time):
     child.expect('#')
     child.sendline('exit')
     child.expect('#')
-    hostname = child.after
+    #hostname = child.after
     child.sendline('\r')
     child.expect('#')
-    child.sendline("backup startup-configuration to 137.204.22.33 {}".format(hostname.cfg))
-    child.expec('#')
+    #child.sendline("backup startup-configuration to 137.204.22.33 {}".format(hostname))
+    #child.expec('#')
     child.sendline('write memory')
     child.expect('#')
     # Note that child.before contains the output from the last expected item and this expect

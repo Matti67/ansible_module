@@ -1,0 +1,3 @@
+---
+loop_protect:
+  - cat: /home/max/ansible/module/procurve/resul: File o directory non esistente
