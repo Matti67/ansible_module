@@ -80,7 +80,9 @@ if vlid=='all':
             res_str=str(res)
             #print(res_str[1])
             i=0
-            while i < len(res_str):
+            lun=len(res_str)
+            #print("the lengh of res_str is:",lun)
+            while i < lun:
                 #print(i)       
                 if ((res_str[i:i+1]=='1') and (k < len(int_list))):
                     interface=int_list[k]
@@ -119,8 +121,10 @@ else:
         res = bin(int(num_str, scale))[2:].zfill(num_of_bits)
         res_str=str(res)
         #print(res_str[1])
+        lun=len(res_str)
+        #print("the lengh of res_str is:",lun)
         i=0
-        while i < len(res_str):
+        while i < lun:
             #print(i)       
             if ((res_str[i:i+1]=='1') and (k < len(int_list))):
                 interface=int_list[k]

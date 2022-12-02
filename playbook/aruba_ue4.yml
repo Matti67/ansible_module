@@ -4,6 +4,7 @@
     hosts: ue4
     gather_facts: no
     connection: local
+    #ansible_network_os: aruba
 
     tasks:
 

@@ -1,9 +1,9 @@
 #!/bin/bash
-#script_path1=
+#this program retrieve the list of untagged ports for each vlan
 read -p "enter an IP address:" ip
 echo "your IP is: $ip"
-read -p "enter the vlan ID to get untagged ports:" vlan
-echo "the entered vlan: $vlan"
+read -p "enter the vlan ID (enter 'all' for the entire list) to get untagged ports:" vlan
+echo "the entered vlan/vlans: $vlan"
 #ip=$1
 export vlan
 path="/home/max/ansible/module/procurve"

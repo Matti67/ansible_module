@@ -85,12 +85,13 @@ build_range() {
   done
   end_range
   (IFS=,; printf '%s\n' "${result[*]}" &> $path/result)
+  #(printf '%s\n' "${result[*]}") &> $path/result
 }
 #file8=$(cat  $path/Eth_int |tr "\n" " ")
 #Length2=($file8)
 #echo $Length2;
 #hostname=$(snmpget -v 2c -c pubrim $ip sysName.0 | sed -n -e 's/^.*STRING: //p')
-#
+#source /home/max/ansible/module/library/hp_nolldp2.sh
 #source /home/max/ansible/module/library/hp_counters.sh
 #
 file8=$(cat  $path/Eth_int |tr "\n" " ")

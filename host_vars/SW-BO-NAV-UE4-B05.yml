@@ -1,12 +1,11 @@
 ---
+ports:
+  host_ports: 1/1-1/48,1/A1-1/A4,2/1-2/48,2/A1-2/A4,Trk1
 loop_protect:
   - 1/1-1/48
   - 1/A2-1/A4
   - 2/1-2/48
   - 2/A2-2/A4
-  - Trk1
-ports:
-  host_ports: 1/1-1/48,1/A2-1/A4,2/1-2/48,2/A2-2/A4,Trk1
 ports_free:
   - 1/1-1/48
   - 1/A2-1/A4
@@ -17,7 +16,7 @@ vlans:
       id: '1'
       name: DEFAULT_VLAN
       ports_tagged: Trk1
-      ports_untagged: 1/A2-1/A4,2/A1-2/A4,3/A2-3/A4
+      ports_untagged: 1/A2-1/A4,2/A2-2/A4
       vlan_voice: no voice
     '2103':
       id: '2103'
@@ -34,19 +33,19 @@ vlans:
     '2109':
       id: '2109'
       name: MANAGEMENT
-      ports_tagged: Trk1
-      ports_untagged: C1-C6,Trk1
+      ports_tagged: 1/A2-1/A4
+      ports_untagged: 1/1-1/6,Trk1
       vlan_voice: no voice
     '2110':
       id: '2110'
       name: UTENZA_UFFICI
       ports_tagged: Trk1
-      ports_untagged: 1/6-1/48,2/1-2/48,3/1-3/48
+      ports_untagged: 1/7-1/48,2/1-2/48
       vlan_voice: no voice
     '2111':
       id: '2111'
       name: VL_2111-VOIP
-      ports_tagged: 1/6-1/48,2/1-2/48,3/1-3/48,Trk1
+      ports_tagged: 1/1-1/48,1/A2-1/A4,2/1-2/48,2/A2-2/A4,Trk1
       ports_untagged: 'null'
       vlan_voice: voice
     '2113':
