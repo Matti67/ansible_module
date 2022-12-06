@@ -3,22 +3,30 @@
   - name: DEPLOY SNMP CONFIGURATIONS 
     hosts: test
     gather_facts: no
-    connection: network_cli
+    #connection: network_cli
+    connection: local
 
     tasks:
 
       - name: GENERATE SNMP CONFIG FILE
-        template: src=../templates/snmp.j2 dest=./configs/snmp-auto.cfg
+        template: src=../templates/config_test.j2 dest=../configs/config_test.cfg
         tags: build
 
       - name: DEPLOY SNMP FROM AUTO-GENERATED FILE
-        ios_config:
-          src: "../configs/snmp-auto.cfg"
+        aruba_config:
+          src: "../configs/config_test.cfg"
           #provider: "{{ credentials }}"
-        notify: save config
+          backup: "yes"
+          #notify: save config
+          #save_when: "always"
+          backup_options:
+            filename: "{{ inventory_hostname }}.cfg"
+            dir_path: /home/max/ansible/module
         tags: deploy
 
-    handlers:
+    #handlers:
       - name: save config
-        ios_command:
-          commands: wr
+        aruba_config:
+          commands:
+            - write memory
+        tags: save

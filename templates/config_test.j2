@@ -1,0 +1,22 @@
+{% for int_nolldp in loop_protect %}
+loop-protect {{ int_nolldp }}
+loop-protect trap loop-detected
+{% endfor %}
+{# loop-protect trap loop-detected #}
+{% for item in vlans -%}
+ vlan {{ vlans[item].id }}
+ name "{{ vlans[item].name }}"
+ {% if vlans[item].ports_untagged == 'null' -%}
+ tagged {{ vlans[item].ports_tagged }}
+ {% else -%}
+ untagged {{ vlans[item].ports_untagged }}
+ tagged {{ vlans[item].ports_tagged }}
+ {% endif -%}
+ {% if vlans[item].vlan_voice == 'no voice' -%}
+ no voice
+ {% else -%}
+ qos priority 6
+ {{ vlans[item].vlan_voice }}
+ {% endif -%}
+ exit
+{% endfor %}

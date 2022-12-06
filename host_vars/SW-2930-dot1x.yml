@@ -1,3 +1,40 @@
 ---
+ports:
+  host_ports: 1-48,A1-A4
 loop_protect:
-  - cat: /home/max/ansible/module/procurve/resul: File o directory non esistente
+  - 1-43,45-48
+  - A1-A4
+ports_free:
+  - 1-43,45-48
+  - A1-A4
+vlans:
+    '1':
+      id: '1'
+      name: DEFAULT_VLAN
+      ports_tagged: 44
+      ports_untagged: A1-A4
+      vlan_voice: no voice
+    '35':
+      id: '35'
+      name: rete35-22
+      ports_tagged: 44
+      ports_untagged: 'null'
+      vlan_voice: no voice
+    '2110':
+      id: '2110'
+      name: UTENZA_UFFICI
+      ports_tagged: 44
+      ports_untagged: 1-10
+      vlan_voice: no voice
+    '2111':
+      id: '2111'
+      name: VL_2111-VOIP
+      ports_tagged: 44
+      ports_untagged: 'null'
+      vlan_voice: voice
+    '2113':
+      id: '2113'
+      name: VL_2113-UE4-PRIV-LAB
+      ports_tagged: 44
+      ports_untagged: 'null'
+      vlan_voice: no voice

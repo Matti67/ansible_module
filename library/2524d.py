@@ -1,4 +1,3 @@
-#!/usr/bin/env python3.6
 ##this program is a template about the way to save startup config to tftp server
 ##have a deep look on the way to save the switch config file 
 ##with a var which content is device hostname
@@ -17,11 +16,12 @@ import subprocess
 import pdb
 import pexpect
 #import struct, signal
-host = input("insert ip address: ")
+#host = input("insert ip address: ")
 #print(host)
-ssh_pass = 'xxxxxxxx'
+#ssh_pass = 'XXXXXXXX'
+ssh_pass = sys.argv[2]
 #user = 'mng_reti'
-#hostname = sys.argv[1]
+host = sys.argv[1]
 getName =  subprocess.Popen("snmpget -v 2c -c pubrim {} sysName.0 | sed -n -e 's/^.*STRING: //p'".format(host), shell=True, stdout=subprocess.PIPE).stdout
 hostname =  getName.read()
 #remove last character from hostname content
@@ -36,8 +36,10 @@ sys.stdout = sys.__stdout__
 #user1 = str(user)
 #ip = '137.204.22.76'
 child = pexpect.spawnu("plink -ssh mng_reti@{0}".format(host))
-child.logfile = sys.stdout
-child.delaybeforesend = 1
+logf = open("/home/max/ansible/module/python_log" , "w")
+#child.logfile = sys.stdout
+child.logfile = logf
+child.delaybeforesend = 0.01
 i=child.expect (['Continue', 'Store key', 'password:', 'Access granted', 'Press any key', '#'], timeout=4)
 if i == 0:
     child.sendline('y')
@@ -177,5 +179,6 @@ child.sendline("logout")
 child.expect(r'y/n')
 child.sendline("y")
 pass
+logf.close()
 child.close()
 sys.exit()

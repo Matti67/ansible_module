@@ -1,0 +1,23 @@
+---
+
+- name: Run python scripts in remote machine
+  hosts: test
+  become_user: root
+  connection: local
+  
+  tasks:
+    #- name: the python script save startup config to remote tftp server
+    #  script: ../library/2524d.py {{ ansible_host }}
+    #    #executable: /usr/local/bin/ansible
+    - name: test
+      register: results
+      args:
+        stdin: |
+          import sys
+          print(sys.version)
+      #command: /usr/bin/python3
+      script: ../library/2524d.py {{ ansible_host }} {{ ansible_ssh_pass }}
+      args:
+        executable: /usr/bin/python3.6
+    #- debug:
+   #   var: results 
