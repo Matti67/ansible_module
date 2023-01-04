@@ -1,0 +1,57 @@
+name: Server Configuration
+on:
+  push:
+    branches:
+      # Add any additional branches you want to run the workflow on here..
+      - "master"
+
+jobs:
+  script:
+    runs-on: self-hosted
+    steps:
+      # Installs the private SSH key so we can authenticate with the server.
+      # The known host placeholder is necessary to make the action to work.
+      # This is already setup on the server to accept our key.
+      ##- name: Install SSH Key for the server
+      ##  uses: shimataro/ssh-key-action@v2
+      ##  with:
+      ##    key: ${{ secrets.SSH_PRIVATE_KEY }}
+      ##    known_hosts: "a-placeholder"
+
+      # Check the repo out. We need to be able to access the playbook.
+      - name: Checkout the repo
+        uses: actions/checkout@v2
+
+      # NOTE: Not needed if you have the ip or hostname hardcoded in inventory.
+      #- name: Add secret hostname to /etc/hosts
+      #  run: echo "${{ secrets.SERVER }} do-devbox" | sudo tee -a /etc/hosts
+
+      # Ansible is installed on ubuntu-latest
+      - name: Run Ansible Playbook
+        uses: dawidd6/action-ansible-playbook@v2
+        with:
+          # Required, playbook filepath
+          playbook: python.yml
+          # Optional, directory where playbooks live
+          directory: ./playbook
+          # Optional, SSH private key
+          ##key: ${{secrets.SSH_PRIVATE_KEY}}
+          # Optional, literal inventory file contents
+          ##inventory: |
+          ##  [all]
+          ##  example.com
+          ##
+          ##  [group1]
+          ##  example.com
+          ### Optional, SSH known hosts file content
+          ##known_hosts: .known_hosts
+          # Optional, encrypted vault password
+          vault_password: ${{secrets.VAULT_PASSWORD}}
+          # Optional, galaxy requirements filepath
+          requirements: galaxy-requirements.yml
+          # Optional, additional flags to pass to ansible-playbook
+          options: |
+            --inventory ./inventory.yml
+          #  --limit group1
+          #  --extra-vars hello=there
+            --verbose
