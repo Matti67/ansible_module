@@ -10,11 +10,11 @@ jobs:
   deploy_code:
     runs-on: self-hosted
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python 3.6
-      uses: actions/setup-python@v3
+    - uses: actions/checkout@v1
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
       with:
-        python-version: 3.6
+        python-version: 3.7
   
     - name: set ansible config secrets
       env:
