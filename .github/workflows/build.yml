@@ -9,7 +9,6 @@ on:
 jobs:
   deploy_code:
     runs-on: self-hosted
-
     steps:
     - uses: actions/checkout@v1
     - name: Set up Python 3.6
@@ -26,8 +25,9 @@ jobs:
         #mkdir .ssh
         #echo "$DO_SSH_KEY" > .ssh/id_digitalocean
         chmod 666 /home/max/ansible/vault/.vault_pass
-     - name: Run ansible script
-        shell: bash 
-        run: |
+        
+    - name: Run ansible script
+      shell: bash 
+      run: |
           cd /home/max/ansible/module
           ansible-playbook -i inventory.yml playbook/python.yml
