@@ -1,0 +1,30 @@
+name: Ansible deploy
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Python 3.6
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.6
+  
+    - name: set ansible config secrets
+      env:
+        ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
+       # DO_SSH_KEY: ${{ secrets.DO_SSH_KEY }}
+      run: |
+        echo "$ANSIBLE_VAULT_PASSWORD" > /home/max/ansible/module/vault/.vault_pass
+        #mkdir .ssh
+        #echo "$DO_SSH_KEY" > .ssh/id_digitalocean
+        chmod 666 /home/max/ansible/vault/.vault_pass
+     - name: Run ansible script
+        shell: bash 
+        run: |
+          cd /home/max/ansible/module
+          ansible-playbook -i inventory.yml playbook/python.yml
