@@ -1,7 +1,7 @@
 name: Ansible deploy
 
 on:
-  # Triggers this Action on push or pull request events on the "main" branch and when manually requested from the "Actions" tab
+  ## Triggers this Action on push or pull request events on the "main" branch and when manually requested from the "Actions" tab
   push:
     branches: [ master ]
   workflow_dispatch:
