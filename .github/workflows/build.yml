@@ -4,7 +4,7 @@ on:
   # Triggers this Action on push or pull request events on the "main" branch and when manually requested from the "Actions" tab
   push:
     branches: [ master ]
-    workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   deploy_code:
