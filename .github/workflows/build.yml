@@ -7,7 +7,7 @@ on:
     workflow_dispatch:
 
 jobs:
-  deploy_code:
+  build:
     runs-on: self-hosted
 
     steps:
