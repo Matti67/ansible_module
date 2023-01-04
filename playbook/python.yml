@@ -2,8 +2,8 @@
 
 - name: Run python scripts in remote machine
   hosts: test
-  become_user: root
-  become_method: su
+  become: true
+  become_method: sudo
   connection: local
   
   tasks:
