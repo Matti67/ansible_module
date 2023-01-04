@@ -21,7 +21,7 @@ jobs:
         ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
        # DO_SSH_KEY: ${{ secrets.DO_SSH_KEY }}
       run: |
-        touch /home/max/ansible/module/vault/.vault_pass
+        #touch /home/max/ansible/module/vault/.vault_pass
         echo "$ANSIBLE_VAULT_PASSWORD" > /home/max/ansible/module/vault/.vault_pass
         #mkdir .ssh
         #echo "$DO_SSH_KEY" > .ssh/id_digitalocean
