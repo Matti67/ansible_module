@@ -1,4 +1,5 @@
-name: Server Configuration
+name: Run Ansible playbook
+
 on:
   push:
     branches:
@@ -54,4 +55,4 @@ jobs:
             --inventory ./inventory.yml
           #  --limit group1
           #  --extra-vars hello=there
-            -vvv
+          #  --verbose -vvv
