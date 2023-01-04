@@ -24,7 +24,7 @@ jobs:
         echo "$ANSIBLE_VAULT_PASSWORD" > /home/max/ansible/module/vault/.vault_pass
         #mkdir .ssh
         #echo "$DO_SSH_KEY" > .ssh/id_digitalocean
-        chmod 666 /home/max/ansible/vault/.vault_pass
+        chmod 666 /home/max/ansible/module/vault/.vault_pass
         
     - name: Run ansible script
       shell: bash 
