@@ -1,7 +1,7 @@
 name: Run Ansible playbook
 
 on:
-  push:
+  pull:
     branches:
       # Add any additional branches you want to run the workflow on here..#1
       - "master"
