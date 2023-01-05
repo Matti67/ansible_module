@@ -31,4 +31,4 @@ jobs:
       shell: bash 
       run: |
           cd /home/max/ansible/module
-          ansible-playbook -i inventory.yml playbook/python.yml
+          ansible-playbook -i inventory.yml playbook/python.yml --limit "SW-2930-dot1x" -vvv 
