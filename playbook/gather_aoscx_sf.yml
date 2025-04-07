@@ -11,8 +11,9 @@
       ansible_python_interpreter: /home/max/.pyenv/shims/python3
       #ansible_network_os: aruba
       ansible_network_os: arubanetworks.aoscx.aoscx
+      ##the following is the system user and password, ie mng_reti
       ansible_ssh_user: mng_reti
-      ansible_ssh_pass: kS6n3GWS1xkr
+      ansible_ssh_pass: xxxxxxx
 
     tasks:
 #                  

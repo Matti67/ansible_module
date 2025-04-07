@@ -7,8 +7,9 @@
      become_user: max
      vars:
        ansible_network_os: cisco.ios.ios  # set for a play
+       ##the following is the system user and password, ie mng_reti
        ansible_ssh_user: mng_reti
-       ansible_ssh_pass: kS6n3GWS1xkr
+       ansible_ssh_pass: xxxxxxx
        #ansible_ssh_user: m.mattioli@unibo.it
        #ansible_ssh_pass: Gabri-2012
 

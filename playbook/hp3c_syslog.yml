@@ -45,8 +45,9 @@
       - name: adding new syslog server
         hp3c_config3:
           host: "{{ ansible_host }}"
+          #the following is the system user and password, ie mng_reti
           ssh_user: "mng_reti"
-          ssh_pass: "kS6n3GWS1xkr"
+          ssh_pass: "xxxxxxx"
           #ssh_user: "m.mattioli@unibo.it"
           #ssh_pass: "Gabri-2012"
           #ssh_user: "{{ ansible_ssh_user }}"

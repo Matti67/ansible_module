@@ -47,8 +47,9 @@
           host: "{{ ansible_host }}"
           #ssh_user: "mng_reti"
           #ssh_pass: "kS6n3GWS1xkr"
-          ssh_user: "m.mattioli@unibo.it"
-          ssh_pass: "Gabri-2012"
+          #the following is the user own account and password not the system user, ie mng_reti
+          ssh_user: "XXXXXXX"
+          ssh_pass: "XXXXXXX"
           #ssh_user: "{{ ansible_ssh_user }}"
           #ssh_pass: "{{ ansible_ssh_pass }}"
           timeparam: 10
