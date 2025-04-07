@@ -1,0 +1,25 @@
+---
+5120-48G EI Switch with 2 Interface Slots:
+  hosts:
+    SW-BO-FOSC7-ARCH12:
+      ansible_host: "172.30.23.221"
+    SWT-ARCH11:
+      ansible_host: "172.30.23.239"
+    SWT-BIOC11 stack member 1:
+      ansible_host: "172.30.14.238"
+    SWT-CN61:
+      ansible_host: "172.30.23.241"
+    SWT-CSCA11:
+      ansible_host: "172.30.22.244"
+    SWT-CSCA31:
+      ansible_host: "172.30.22.242"
+    SWT-FAR11 stack member 1:
+      ansible_host: "172.30.14.239"
+    SWT-FARM21 stack member 1:
+      ansible_host: "172.30.49.247"
+    SWT-OB11 stack member 1:
+      ansible_host: "172.30.26.248"
+    SWT-OB21:
+      ansible_host: "172.30.26.247"
+    SWT-ZSR08_LAB:
+      ansible_host: "172.30.2.30"

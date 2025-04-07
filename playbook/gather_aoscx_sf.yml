@@ -1,0 +1,45 @@
+---
+  - name: capture show output
+    hosts: all
+    #become: yes
+    become_user: max
+    gather_facts: no
+    connection: network_cli
+    #connection: local
+    vars:
+    #ansible_python_interpreter: /usr/bin/python3
+      ansible_python_interpreter: /home/max/.pyenv/shims/python3
+      #ansible_network_os: aruba
+      ansible_network_os: arubanetworks.aoscx.aoscx
+      ansible_ssh_user: mng_reti
+      ansible_ssh_pass: kS6n3GWS1xkr
+
+    tasks:
+#                  
+      - name: Execute show commands and output results to file in plaintext.
+        arubanetworks.aoscx.aoscx_command:
+          commands:
+            - show running-config | include logging
+          output_file: "/home/max/ansible/module/syslog_{{ inventory_hostname }}"
+          output_file_format: plain-text
+          
+
+    
+       #- name: show run
+       #  aruba_command:
+       #  #community.network.aruba_command:
+       #    commands:
+       #    #- show vlan
+       #    #- show vlan port 1/1/49
+       #      #- show system inventory chassis
+       #      #- show system inventory transceiver
+       #      #- show system inventory power-supply
+       #      - show running-config | include logging
+       #  register: config
+#
+       #- name: save output to local directory
+       #  copy:
+       #    content: "{{ config.stdout | replace('\\n', '\n') }}"
+       #    dest: "/home/max/ansible/unibo/syslog{{ inventory_hostname }}"
+
+      

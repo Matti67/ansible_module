@@ -20,7 +20,7 @@
       #  tags: deploy
 
       - name: "Run myscript to set up loop_protect"
-        aruba_config:
+        arubaoss_config:
           src: "../configs/config_ue4.cfg"
           #host: "{{ ansible_host }}"
           #ssh_user: "{{ ansible_ssh_user }}"

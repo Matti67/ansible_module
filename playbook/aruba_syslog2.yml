@@ -1,0 +1,86 @@
+---
+  
+  - name: DEPLOY NEW SYSLOG SERVER ON ARUBA SWITCH
+    #hosts: Aruba 2930F-24G-4SFP
+    hosts: all
+    #gather_facts: no
+    gather_facts: no
+    #connection: local
+    #connection: httpapi
+    #become: true
+    become_user: max
+    connection: network_cli
+    #connection: local
+    #ansible_network_os: aruba
+    #ansible_network_os: arubanetworks.aos_switch.arubaoss
+    collections:
+      #- arubanetworks.aoscx
+      - arubanetworks.aos_switch
+    #vars:
+    #  running_config: "{{ switch_config.stdout[0] }}"
+    #  ansible_network_os: arubanetworks.aos_switch.arubaoss
+      #ansible_network_os: arubanetworks.aoscx.aoscx
+      #ansible_network_os: aruba
+      #ansible_python_interpreter: /home/max/.pyenv/shims/python3
+      #ansible_network_cli_ssh_type: libssh
+      #ssh_user: "{{ ansible_ssh_user }}"
+      #ssh_pass: "{{ ansible_ssh_pass }}"
+    #vars:
+    #  ansible_httpapi_use_ssl: yes  # ✅ Use SSL
+    #  ansible_httpapi_validate_certs: no  # ✅ Disable cert validation (for self-signed certs)
+    #  ansible_network_os: arubanetworks.aos_switch.arubaoss  # ✅ Ensure correct network OS
+
+    tasks:
+
+      #- name: adding new syslog server
+      #  #arubanetworks.aos_switch.arubaoss_config:
+      #  arubanetworks.aoscx.aoscx_config:
+      #    #backup: true
+      #    save_when: modified
+      #    commands:
+      #      - logging 137.204.25.235
+      #    
+      #- name: verify above command
+      #  #community.network.aruba_command:
+      #  #arubanetworks.aos_switch.arubaoss_command:
+      #  arubanetworks.aoscx.aoscx_command:
+      #    commands:
+      #      - show syslog config
+      #    wait_for:
+      #      - result[0] contains 137.204.25.235
+      #
+      - name: Gather current running config
+        arubaoss_command:
+          commands:
+            - show running-config
+        register: switch_config
+
+
+      - name: adding new syslog server
+        #proc_config3:
+        #aruba_config:
+        #aoscx_config:
+        arubaoss_config:
+          #host: "{{ ansible_host }}"
+          ##ssh_user: "mng_reti"
+          #ssh_pass: "kS6n3GWS1xkr"
+          #ssh_user: "m.mattioli@unibo.it"
+          #ssh_pass: "Gabri-2012"
+          #ssh_user: "{{ ansible_ssh_user }}"
+          #ssh_pass: "{{ ansible_ssh_pass }}"
+          #timeparam: 10
+          lines:
+            - logging 137.204.25.235
+            #- no ip ssh filetransfer
+            #- tftp client
+            #- copy tftp flash 137.204.22.33 E_11_43.swi primary
+            #- show flash
+            #- boot system flash primary
+            #- write memory
+          backup_options:
+            filename: backup.cfg
+            dir_path: /host/max/ansible/module/
+          running_config: "{{ switch_config.stdout[0] }}"
+          save_when: changed
+          
+            #tags: deploy

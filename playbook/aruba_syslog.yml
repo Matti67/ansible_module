@@ -1,0 +1,62 @@
+---
+
+  - name: DEPLOY NEW SYSLOG SERVER ON ARUBA SWITCH
+    hosts: all
+    #gather_facts: no
+    gather_facts: true
+    #connection: local
+    become: true
+    become_user: max
+    connection: local
+    #connection: network_cli
+    #ansible_network_os: aruba
+    #ansible_network_os: arubanetworks.aos_switch.arubaoss
+    #collections:
+    #  - arubanetworks.aos_switch
+    #vars:
+    #  host: "{{ ansible_host }}"
+    #  ansible_network_os: arubanetworks.aos_switch.arubaoss
+      #ansible_network_os: arubaoss
+    vars:
+      mng_reti: "mng_reti"  # Define mng_reti here
+      kS6n3GWS1xkr: "kS6n3GWS1xkr"  # Define the password here if it's static
+
+    tasks:
+
+      #- name: adding new syslog server
+      #  arubanetworks.aos_switch.arubaoss_config:
+      #  #aruba_config:
+      #    #backup: true
+      #    save_when: modified
+      #    lines:
+      #      - logging 137.204.25.235
+      #    
+      #- name: verify above command
+      #  #community.network.aruba_command:
+      #  arubanetworks.aos_switch.arubaoss_command:
+      #  #aruba_command:
+      #    commands:
+      #      - show syslog config
+      #    wait_for:
+      #      - result[0] contains 137.204.25.235
+      #
+      - name: adding new syslog server
+        proc_config3:
+          host: "{{ ansible_host }}"
+          ssh_user: "{{ mng_reti }}"
+          ssh_pass: "{{ kS6n3GWS1xkr }}"
+          #ssh_user: "{{ ansible_ssh_user }}"
+          #ssh_pass: "{{ ansible_ssh_pass }}"
+          #ssh_user: "mng_reti"
+          #ssh_pass: "kS6n3GWS1xkr"
+          timeparam: 10
+          commands:
+            - logging 137.204.25.235
+            #- no ip ssh filetransfer
+            #- tftp client
+            #- copy tftp flash 137.204.22.33 E_11_43.swi primary
+            #- show flash
+            #- boot system flash primary
+            - write memory
+          
+          #tags: deploy

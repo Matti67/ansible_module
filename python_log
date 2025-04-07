@@ -39,7 +39,7 @@ Software revision WC.16.10.0016
  U.S. Government under vendor's standard commercial license.
 
 [1;13r[1;1H[24;1HPress any key to continue[13;1H[?25h[24;27H  
-[?6l[1;24r[?7h[2J[1;1H[1920;1920H[6n[1;1HYour previous successful login (as manager) was on 2023-01-05 11:35:56     
+[?6l[1;24r[?7h[2J[1;1H[1920;1920H[6n[1;1HYour previous successful login (as manager) was on 2023-01-05 11:54:07     
  from 137.204.22.33
 [1;24r[24;1H[24;1H[2K[24;1H[?25h[24;1H[24;1HSW-2930-dot1x# [24;1H[24;16H[24;1H[?25h[24;16H[24;16H [24;16H[?25h[24;17H[1;0H[1M[24;1H[1L[24;17H[24;1H[2K[24;1H[?25h[24;1H[1;24r[24;1H[1;24r[24;1H[24;1H[2K[24;1H[?25h[24;1H[24;1HSW-2930-dot1x# [24;1H[24;16H[24;1H[?25h[24;16H
 configure terminal

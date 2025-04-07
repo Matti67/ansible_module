@@ -1,0 +1,64 @@
+---
+"3100":
+  children:
+    3100-16 v2 EI:
+      hosts:
+        SWT-AMZS-01:
+          ansible_host: "172.30.2.51"
+        SWT-AMZS-02:
+          ansible_host: "172.30.2.52"
+        SWT-AMZS-03:
+          ansible_host: "172.30.2.53"
+        SWT-AMZS-04:
+          ansible_host: "172.30.2.54"
+    3100-24 EI:
+      hosts:
+        SW-BO-FOSC7-CASY:
+          ansible_host: "172.30.23.232"
+        SW-BO-STRMAG45-P2-076:
+          ansible_host: "172.30.19.217"
+        SWT-ALEN11:
+          ansible_host: "172.30.23.243"
+    3100-24 v2 EI:
+      hosts:
+        SW-BO-ZAMBONI29-22:
+          ansible_host: "172.30.43.87"
+        SWT-ARA31:
+          ansible_host: "172.30.25.247"
+        SWT-AULEM:
+          ansible_host: "172.30.36.129"
+        SWT-CCDZ21:
+          ansible_host: "172.30.4.74"
+        SWT-CSCA21:
+          ansible_host: "172.30.22.243"
+        SWT-INMC41:
+          ansible_host: "172.30.57.14"
+        SWT-MRTE21:
+          ansible_host: "172.30.99.66"
+        SWT-SCFARM31:
+          ansible_host: "172.30.42.3"
+    3100-24-PoE v2 EI: {}
+    3100-8 v2 EI:
+      hosts:
+        SW-BO-BARB4-CE:
+          ansible_host: "172.30.11.242"
+        SW-BO-RANZ14-CE:
+          ansible_host: "172.30.25.242"
+        SW-BO-SVIT59-CE:
+          ansible_host: "172.30.45.247"
+        SW-BO-ZAMB33-DA-MM1:
+          ansible_host: "172.30.35.84"
+        SW-BO-ZAMB33-DA-MM2:
+          ansible_host: "172.30.35.82"
+        SW-VET-TOLA50-CE:
+          ansible_host: "172.30.33.147"
+        SWT-CE-ASTR:
+          ansible_host: "172.30.13.197"
+        SWT-CE-CESIA:
+          ansible_host: "172.30.42.52"
+        SWT-CE-GM:
+          ansible_host: "172.30.10.190"
+        SWT-CE-IRN:
+          ansible_host: "172.30.14.7"
+        SWT-GIARDBEL:
+          ansible_host: "172.30.43.41"

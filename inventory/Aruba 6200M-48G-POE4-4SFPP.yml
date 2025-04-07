@@ -1,0 +1,5 @@
+---
+Aruba 6200M-48G-POE4-4SFPP:
+  hosts:
+    SW-BO-IRNER49-PT-LAB:
+      ansible_host: "172.30.50.243"

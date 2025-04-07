@@ -1,0 +1,20 @@
+---
+- name: DEPLOY NEW SYSLOG SERVER ON ARUBA SWITCH
+  hosts: all
+  gather_facts: no
+  connection: httpapi  # Use httpapi to interact with the switch
+  become: no
+  vars:
+    ansible_httpapi_use_ssl: yes  # Use SSL for HTTP API
+    ansible_httpapi_validate_certs: no  # Skip cert validation (for self-signed certs)
+    ansible_network_os: arubanetworks.aos_switch.arubaoss  # Ensure the correct network OS is used
+
+  tasks:
+    - name: Adding new syslog server
+      arubaoss_config:
+        lines:
+          - logging 137.204.25.235
+      backup_options:
+        filename: backup.cfg
+        dir_path: /host/max/ansible/module
+      save_when: changed

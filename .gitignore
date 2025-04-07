@@ -1,3 +1,4 @@
 procurve/
 group_vars/*
 vault/.vault_pass
+inventory/

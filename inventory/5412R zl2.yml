@@ -1,0 +1,13 @@
+---
+5412R zl2:
+  hosts:
+    SW-BO-NAV-UE4-A04:
+      ansible_host: "172.30.28.5"
+    SW-BO-NAV-UE4-A05:
+      ansible_host: "172.30.28.8"
+    SW-BO-NAV-UE4-A06:
+      ansible_host: "172.30.28.9"
+    SW-BO-NAV-UE4-C01:
+      ansible_host: "172.30.28.16"
+    SW-OZ-TOLA50-11:
+      ansible_host: "172.30.33.150"

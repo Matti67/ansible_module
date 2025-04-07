@@ -1,0 +1,5 @@
+command: show running-config | include logging
+response: logging 137.204.23.157
+logging 137.204.25.235
+logging facility local1
+------------------------------------------

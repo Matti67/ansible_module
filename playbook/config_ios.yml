@@ -1,0 +1,38 @@
+---
+   - name: capture show output
+     hosts: C9200
+     gather_facts: no
+     connection: network_cli
+     become: true
+     become_user: max
+     vars:
+       ansible_network_os: cisco.ios.ios  # set for a play
+       ansible_ssh_user: mng_reti
+       ansible_ssh_pass: kS6n3GWS1xkr
+       #ansible_ssh_user: m.mattioli@unibo.it
+       #ansible_ssh_pass: Gabri-2012
+
+     tasks:
+       - name: Add new syslog server
+         ios_config:
+           lines:
+             - logging host 137.204.25.235
+             - logging facility local1
+             - logging trap critical
+           save_when: modified
+         tags: set_syslog
+
+       - name: show syslog configuration
+         cisco.ios.ios_command:
+           commands:
+             - show running-config | include logging
+           #- show ip route
+           #- show version
+           #- show users all  
+         register: config
+         tags: check_syslog
+
+       - name: save output to local directory
+         copy:
+           content: "{{ config.stdout | replace('\\n', '\n') }}"
+           dest: "/home/max/ansible/module/{{ inventory_hostname }}.ios"

@@ -1,0 +1,7 @@
+---
+HPE 5500-24G-4SFP HI:
+  hosts:
+    SWT-NAV-UE1-PI stack member 1:
+      ansible_host: "172.30.61.1"
+    SWT-RIES01 stack member 1:
+      ansible_host: "172.30.150.150"

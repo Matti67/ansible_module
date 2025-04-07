@@ -1,0 +1,482 @@
+---
+Aruba:
+  children:
+    Aruba 2530-24:
+      hosts:
+        SW-BO-BELM8-PT-12:
+          ansible_host: "172.30.42.14"
+        SWT-ZSR09:
+          ansible_host: "172.30.2.18"
+    Aruba 2530-24-PoE+:
+      hosts:
+        SWT-ARA61:
+          ansible_host: "172.30.25.243"
+    Aruba 2530-24G:
+      hosts:
+        i-sp1id2:
+          ansible_host: "172.30.13.57"
+        sp0id4:
+          ansible_host: "172.30.13.45"
+    Aruba 2530-48G:
+      hosts:
+        sp0id1:
+          ansible_host: "172.30.13.46"
+    Aruba 2530-8G:
+      hosts:
+        SW-OZ-TOLA50-CCDZ:
+          ansible_host: "172.30.33.168"
+        SW-OZ-TOLA50-CE-C:
+          ansible_host: "172.30.33.167"
+        SWT-BO-FILIPRE10-CABEL:
+          ansible_host: "172.30.26.5"
+    Aruba 2530-8G-PoE+:
+      hosts:
+        SW-BO-RIS2-ING-VOICI02:
+          ansible_host: "172.30.249.239"
+        SW-BO-RIS2-ING-VOICI03:
+          ansible_host: "172.30.249.242"
+        SW-BO-RIS2-ING-VOICI04:
+          ansible_host: "172.30.249.243"
+        SW-BO-RIS2-ING-VOICI05:
+          ansible_host: "172.30.249.244"
+        SW-BO-RIS2-ING-VOICI06:
+          ansible_host: "172.30.249.245"
+        SW-BO-RIS2-ING-VOICI07:
+          ansible_host: "172.30.249.246"
+        SW-BO-RIS2-ING-VOICI08:
+          ansible_host: "172.30.249.247"
+        SW-BO-RIS2-ING-VOICI09:
+          ansible_host: "172.30.249.248"
+        SW-BO-SGIOVMONTE2-VOICI01:
+          ansible_host: "172.30.10.181"
+    Aruba 2620-24:
+      hosts:
+        SWT-SSIM11:
+          ansible_host: "172.30.160.245"
+    Aruba 2620-48:
+      hosts:
+        SWT-DSTE31:
+          ansible_host: "172.30.42.242"
+        SWT-DSTE42:
+          ansible_host: "172.30.42.238"
+        SWT-II11:
+          ansible_host: "172.30.42.37"
+    Aruba 2930F-24G-4SFP:
+      hosts:
+        SW-BO-BERS4-PA-044:
+          ansible_host: "172.30.19.192"
+        SW-BO-BPICHAT6-TELEC-11:
+          ansible_host: "172.30.13.234"
+        SW-BO-BPICHAT6-TELEC-12:
+          ansible_host: "172.30.13.233"
+        SW-BO-BPICHAT10-11:
+          ansible_host: "172.30.21.250"
+        SW-BO-CARTOL5-AUL1:
+          ansible_host: "172.30.56.1"
+        SW-BO-CARTOL5-AUL2:
+          ansible_host: "172.30.56.2"
+        SW-BO-CARTOL5-AUL5:
+          ansible_host: "172.30.56.3"
+        SW-BO-CARTOL5-AUL6:
+          ansible_host: "172.30.56.4"
+        SW-BO-CARTOL5-AUL7:
+          ansible_host: "172.30.56.5"
+        SW-BO-CARTOL5-CONV:
+          ansible_host: "172.30.56.6"
+        SW-BO-FOSC7-ARCES-2:
+          ansible_host: "172.30.23.220"
+        SW-BO-FOSC7-PEP-PT:
+          ansible_host: "172.30.23.222"
+        SW-BO-FOSC7-PT-ARCH-11:
+          ansible_host: "172.30.23.3"
+        SW-BO-GOMITO2-31:
+          ansible_host: "172.30.4.73"
+        SW-BO-GOMITO2-41:
+          ansible_host: "172.30.4.72"
+        SW-BO-IRN48-PT-11:
+          ansible_host: "172.30.14.240"
+        SW-BO-MARS26-2:
+          ansible_host: "172.30.36.121"
+        SW-BO-MARS49-02:
+          ansible_host: "172.30.64.15"
+        SW-BO-MARS49-21:
+          ansible_host: "172.30.64.4"
+        SW-BO-MARS49-32:
+          ansible_host: "172.30.64.7"
+        SW-BO-NAV-UE1-PT-TELEC:
+          ansible_host: "172.30.61.33"
+        SW-BO-NAV-UE3-1A-TELEC:
+          ansible_host: "172.30.61.34"
+        SW-BO-NAV-UE3-1B-TELEC:
+          ansible_host: "172.30.61.30"
+        SW-BO-PETR-VEC-AULE:
+          ansible_host: "172.30.19.243"
+        SW-BO-RANZ14-R2:
+          ansible_host: "172.30.25.248"
+        SW-BO-RANZ14-R4:
+          ansible_host: "172.30.25.245"
+        SW-BO-RIS2-5:
+          ansible_host: "172.30.249.163"
+        SW-BO-RIS2-6:
+          ansible_host: "172.30.249.164"
+        SW-BO-RIS2-21:
+          ansible_host: "172.30.249.197"
+        SW-BO-RIS2-28 stack member 2:
+          ansible_host: "172.30.249.181"
+        SW-BO-RIS2-30 stack member 2:
+          ansible_host: "172.30.249.183"
+        SW-BO-RIS2-35:
+          ansible_host: "172.30.249.156"
+        SW-BO-RIS2-49:
+          ansible_host: "172.30.249.193"
+        SW-BO-RIS2-63:
+          ansible_host: "172.30.249.210"
+        SW-BO-RIS2-CE-STO:
+          ansible_host: "172.30.249.228"
+        SW-BO-RIS4-NE-P1:
+          ansible_host: "172.30.5.191"
+        SW-BO-RIS4-NE-P1-2:
+          ansible_host: "172.30.5.195"
+        SW-BO-RIS4-NE-P2:
+          ansible_host: "172.30.5.193"
+        SW-BO-RIS4-NE-P3:
+          ansible_host: "172.30.5.196"
+        SW-BO-SARAG8-1P-1:
+          ansible_host: "172.30.15.3"
+        SW-BO-SCALINI-GUASTAV-22:
+          ansible_host: "172.30.29.246"
+        SW-BO-SCALINI-LABUL:
+          ansible_host: "172.30.29.245"
+        SW-BO-SCALINI-LABUR:
+          ansible_host: "172.30.29.244"
+        SW-BO-SDON2-11:
+          ansible_host: "172.30.14.237"
+        SW-BO-SDON2-31:
+          ansible_host: "172.30.14.235"
+        SW-BO-SELMI3-2P-MANTR:
+          ansible_host: "172.30.42.43"
+        SW-BO-STRMAG45-PI-005:
+          ansible_host: "172.30.19.250"
+        SW-BO-TERRAC28-12-AUTC:
+          ansible_host: "172.30.16.184"
+        SW-BO-TERRAC28-TELEC-01:
+          ansible_host: "172.30.16.180"
+        SW-BO-TERRAC28-TELEC-02:
+          ansible_host: "172.30.16.181"
+        SW-BO-TERRAC28-TELEC-03:
+          ansible_host: "172.30.16.182"
+        SW-BO-TERRAC28-TELEC-04:
+          ansible_host: "172.30.16.179"
+        SW-BO-Terrac_Lazzar-Autc:
+          ansible_host: "172.30.16.187"
+        SW-BO-ZAMB33-MU-P2-21:
+          ansible_host: "172.30.35.145"
+        SW-BO-ZAMB33-PI-CTEL:
+          ansible_host: "172.30.35.250"
+        SW-BO-ZAMBONI33-11:
+          ansible_host: "172.30.35.57"
+        SW-NAV-UE5-TELECONT11:
+          ansible_host: "172.30.61.63"
+        SW-OZ-TOLA50-16:
+          ansible_host: "172.30.33.205"
+        SW-OZ-TOLA50-17:
+          ansible_host: "172.30.33.206"
+        SW-OZ-TOLA50-19:
+          ansible_host: "172.30.33.135"
+        SW-OZ-TOLA50-22:
+          ansible_host: "172.30.33.137"
+        SW-OZ-TOLA50-23:
+          ansible_host: "172.30.33.169"
+        SW-RA-ARIANI-TELEC-11:
+          ansible_host: "172.30.130.223"
+        SW-RA-ARIANI-TELEC-21:
+          ansible_host: "172.30.130.224"
+        SWT-IMSCAR21:
+          ansible_host: "172.30.160.239"
+    Aruba 2930F-24G-POEP-4SFP:
+      hosts:
+        SW-BER-CHIESA-E-11:
+          ansible_host: "172.30.71.17"
+        SW-BER-FOREST-F-11:
+          ansible_host: "172.30.71.14"
+        SW-BER-FOREST-G-11:
+          ansible_host: "172.30.71.15"
+        SW-BER-FOREST-H-11:
+          ansible_host: "172.30.71.16"
+        SW-BER-SEGRET-11:
+          ansible_host: "172.30.71.18"
+        SW-BO-BPICHAT6-AULE-12:
+          ansible_host: "172.30.36.141"
+        SW-BO-BPICHAT6-TEL-P-1-LAB:
+          ansible_host: "172.30.13.42"
+        SW-BO-BPICHAT6-TEL-P-2:
+          ansible_host: "172.30.13.40"
+        SW-BO-BPICHAT6-TEL-P13:
+          ansible_host: "172.30.13.36"
+        SW-BO-BPICHAT6-TEL-P23:
+          ansible_host: "172.30.13.33"
+        SW-BO-BPICHAT6-TEL-PT3:
+          ansible_host: "172.30.13.39"
+        SW-BO-IRNERIO46-P3:
+          ansible_host: "172.30.13.41"
+        SW-BO-MARS49-21-TEL:
+          ansible_host: "172.30.64.5"
+        SW-BO-MARS49-32-TEL:
+          ansible_host: "172.30.64.9"
+        SW-BO-MARS49-42-TEL:
+          ansible_host: "172.30.64.14"
+        SW-BO-NAV-BOMBOL-11:
+          ansible_host: "172.30.61.65"
+        SW-BO-NAV-CP-11:
+          ansible_host: "172.30.61.28"
+        SW-BO-NAV-UE2-11:
+          ansible_host: "172.30.61.29"
+        SW-BO-NAV-UE4-B02-VID:
+          ansible_host: "172.30.28.12"
+        SW-BO-NAV-UE4-C03-2:
+          ansible_host: "172.30.28.19"
+        SW-BO-RANZ14-R5:
+          ansible_host: "172.30.25.244"
+        SW-BO-RIS2-TELEC1:
+          ansible_host: "172.30.249.168"
+        SW-BO-SARA8-DAPT2:
+          ansible_host: "172.30.15.247"
+        SW-BO-SDONATO19-21:
+          ansible_host: "172.30.49.243"
+        SW-BO-TOFFANO2-VOIP:
+          ansible_host: "172.30.24.247"
+        SW-BO-ZAMB32-FICLIT-LAB-COMP:
+          ansible_host: "172.30.2.60"
+        SW-BO-ZAMBONI_22-01-TEL:
+          ansible_host: "172.30.17.3"
+        SW-BO-ZAMBONI_22-02-TEL:
+          ansible_host: "172.30.17.6"
+        SW-BO-ZAMBONI_22-03-TEL:
+          ansible_host: "172.30.17.8"
+        SW-BO-ZAMBONI_22-05-TEL:
+          ansible_host: "172.30.17.11"
+        SW-BO-ZAMBONI_22-06-1:
+          ansible_host: "172.30.17.12"
+        SW-IM-LOLLI-11:
+          ansible_host: "172.30.160.242"
+    Aruba 2930M-48G:
+      hosts:
+        SW-BO-BARBERIA4-81:
+          ansible_host: "172.30.11.239"
+        SW-BO-FOSC7-ARCES:
+          ansible_host: "172.30.23.224"
+        SW-BO-MARS49-11:
+          ansible_host: "172.30.64.2"
+        SW-BO-MARS49-31:
+          ansible_host: "172.30.64.6"
+        SW-BO-MARS49-41 stack member 1:
+          ansible_host: "172.30.64.12"
+        SW-BO-MARS49-41 stack member 2:
+          ansible_host: "172.30.64.12"
+        SW-BO-MARS49-51:
+          ansible_host: "172.30.64.10"
+        SW-BO-RANZ14-BLESS:
+          ansible_host: "172.30.25.241"
+        SW-BO-RIS2-LAB9 stack member 1:
+          ansible_host: "172.30.249.144"
+        SW-BO-RIS2-LAB9 stack member 2:
+          ansible_host: "172.30.249.144"
+        SW-BO-RIS2-LAB9 stack member 3:
+          ansible_host: "172.30.249.144"
+        SW-BO-RIS4-VE-PS-2:
+          ansible_host: "172.30.5.227"
+        SW-BO-RIS4-VE-PT-22:
+          ansible_host: "172.30.5.149"
+        SW-BO-STRMAG45-DSOC-BIB:
+          ansible_host: "172.30.19.236"
+        SW-BO-ZAMB33-TROMB-PT-11 stack member 1:
+          ansible_host: "172.30.35.24"
+        SW-BO-ZAMB33-TROMB-PT-11 stack member 2:
+          ansible_host: "172.30.35.24"
+        SW-BO-ZAMB33-TROMB-PT-11 stack member 3:
+          ansible_host: "172.30.35.24"
+        SW-BO-ZAMB33-TROMB-PT-11 stack member 4:
+          ansible_host: "172.30.35.24"
+        SW-IM-PALPERO-PI-11:
+          ansible_host: "172.30.160.209"
+        SW-OZ-TOLA50-18:
+          ansible_host: "172.30.33.134"
+        SW-OZ-TOLA50-20:
+          ansible_host: "172.30.33.136"
+    Aruba 2930M-48G-POE+:
+      hosts:
+        SW-BER-FOREST-C-11:
+          ansible_host: "172.30.71.13"
+        SW-BER-REVELL11:
+          ansible_host: "172.30.71.12"
+        SW-BER-ROCCA11 stack member 1:
+          ansible_host: "172.30.71.10"
+        SW-BER-ROCCA11 stack member 2:
+          ansible_host: "172.30.71.10"
+        SW-BER-SERVER11:
+          ansible_host: "172.30.71.11"
+        SW-BO-ACRI3-12:
+          ansible_host: "172.30.9.249"
+        SW-BO-ACRI3-13:
+          ansible_host: "172.30.9.248"
+        SW-BO-BELM16-PI-12:
+          ansible_host: "172.30.43.8"
+        SW-BO-BPICHAT6-TEL-P11:
+          ansible_host: "172.30.13.34"
+        SW-BO-BPICHAT6-TEL-P12:
+          ansible_host: "172.30.13.35"
+        SW-BO-BPICHAT6-TEL-P21:
+          ansible_host: "172.30.13.31"
+        SW-BO-BPICHAT6-TEL-P22:
+          ansible_host: "172.30.13.32"
+        SW-BO-BPICHAT6-TEL-PT1:
+          ansible_host: "172.30.13.37"
+        SW-BO-BPICHAT6-TEL-PT2:
+          ansible_host: "172.30.13.38"
+        SW-BO-COLLI16-51:
+          ansible_host: "172.30.57.10"
+        SW-BO-IRNER49-P1-11:
+          ansible_host: "172.30.50.247"
+        SW-BO-MARS49-11-TEL:
+          ansible_host: "172.30.64.3"
+        SW-BO-MARS49-31-TEL:
+          ansible_host: "172.30.64.8"
+        SW-BO-MARS49-41-TEL:
+          ansible_host: "172.30.64.13"
+        SW-BO-MARS49-51-TEL:
+          ansible_host: "172.30.64.11"
+        SW-BO-NAV-UE4-A01-2:
+          ansible_host: "172.30.28.2"
+        SW-BO-NAV-UE4-A03  stack member 1:
+          ansible_host: "172.30.28.3"
+        SW-BO-NAV-UE4-A03  stack member 2:
+          ansible_host: "172.30.28.3"
+        SW-BO-NAV-UE4-A03  stack member 3:
+          ansible_host: "172.30.28.3"
+        SW-BO-NAV-UE4-A03-VID:
+          ansible_host: "172.30.28.4"
+        SW-BO-NAV-UE4-A04-2:
+          ansible_host: "172.30.28.6"
+        SW-BO-NAV-UE4-A04-3:
+          ansible_host: "172.30.28.7"
+        SW-BO-NAV-UE4-B03  stack member 2:
+          ansible_host: "172.30.28.13"
+        SW-BO-PUNTONI1-11:
+          ansible_host: "172.30.68.1"
+        SW-BO-PUNTONI1-21:
+          ansible_host: "172.30.68.2"
+        SW-BO-RIS2-P1-227-R70 stack member 1:
+          ansible_host: "172.30.249.192"
+        SW-BO-RIS2-P1-227-R70 stack member 2:
+          ansible_host: "172.30.249.192"
+        SW-BO-SARAG8-PT-1:
+          ansible_host: "172.30.15.2"
+        SW-BO-SGIAC7-PA-12:
+          ansible_host: "172.30.35.242"
+        SW-BO-TOLA50-AVI-11:
+          ansible_host: "172.30.33.170"
+        SW-BO-TOLA50-AVI-21:
+          ansible_host: "172.30.33.171"
+        SW-BO-TROMB3-PT stack member 1:
+          ansible_host: "172.30.35.27"
+        SW-BO-TROMB3-PT stack member 2:
+          ansible_host: "172.30.35.27"
+        SW-BO-ZAMB32-P1-LAB  stack member 1:
+          ansible_host: "172.30.2.27"
+        SW-BO-ZAMB32-P1-LAB  stack member 2:
+          ansible_host: "172.30.2.27"
+        SW-BO-ZAMB33-AMAR-PT-11 stack member 1:
+          ansible_host: "172.30.35.25"
+        SW-BO-ZAMB33-AMUP-11:
+          ansible_host: "172.30.35.21"
+        SW-BO-ZAMB33-ARIC-2P-11 stack member 1:
+          ansible_host: "172.30.35.26"
+        SW-BO-ZAMB33-MU-P2-11:
+          ansible_host: "172.30.35.14"
+        SW-BO-ZAMB33-TA-P3-11:
+          ansible_host: "172.30.35.17"
+        SW-BO-ZAMB35-P1-31:
+          ansible_host: "172.30.43.248"
+        SW-BO-ZAMBO25-PI-11 stack member 1:
+          ansible_host: "172.30.36.183"
+        SW-BO-ZAMBO25-PI-11 stack member 2:
+          ansible_host: "172.30.36.183"
+        SW-BO-ZAMBO25-PI-11 stack member 3:
+          ansible_host: "172.30.36.183"
+        SW-BO-ZAMBO25-PI-21 stack member 1:
+          ansible_host: "172.30.35.236"
+        SW-BO-ZAMBO25-PI-21 stack member 2:
+          ansible_host: "172.30.35.236"
+        SW-BO-ZAMBONI_22-01-2:
+          ansible_host: "172.30.17.2"
+        SW-BO-ZAMBONI_22-02-1:
+          ansible_host: "172.30.17.4"
+        SW-BO-ZAMBONI_22-02-2:
+          ansible_host: "172.30.17.5"
+        SW-BO-ZAMBONI_22-03-1:
+          ansible_host: "172.30.17.7"
+        SW-BO-ZAMBONI_22-04-1:
+          ansible_host: "172.30.17.9"
+        SW-BO-ZAMBONI_22-05-1:
+          ansible_host: "172.30.17.10"
+        SW-BO-ZAMBONI_22-07-1:
+          ansible_host: "172.30.17.13"
+        SWT-NAV-UE3-2A-VT:
+          ansible_host: "172.30.61.13"
+    Aruba 3810M 48G PoeP 1-slot:
+      hosts:
+        SW-BO-ZAMB25-UFF-21:
+          ansible_host: "172.30.36.184"
+        SW-BO-ZANOLINI41-11:
+          ansible_host: "172.30.39.129"
+    Aruba 5412R-zl2: {}
+    Aruba 6200M-48G-POE4-4SFPP:
+      hosts:
+        SW-BO-IRNER49-PT-LAB:
+          ansible_host: "172.30.50.243"
+    Aruba 6300M-24SFPP-2SFP56-2SFP28: {}
+    Aruba 6300M-48G-POE4-4SFP56:
+      hosts:
+        SW-BO-NAV-UE4-SF-R1-12:
+          ansible_host: "172.30.61.214"
+        SW-BO-NAV-UE4-SF-R2-12:
+          ansible_host: "172.30.61.215"
+        SW-BO-NAV-UE4-SF-R3-12:
+          ansible_host: "172.30.61.216"
+        SW-BO-NAV-UE4-SF-R4-12:
+          ansible_host: "172.30.61.218"
+        SW-BO-NAV-UE4-SF-R5-12:
+          ansible_host: "172.30.61.217"
+        SW-BO-NAV-UE4-SF-R6-12:
+          ansible_host: "172.30.61.219"
+        SW-BO-NAV-UE4-SF-R7-12:
+          ansible_host: "172.30.61.220"
+        SW-BO-NAV-UE4-SF-R8-12:
+          ansible_host: "172.30.61.221"
+        SW-BO-NAV-UE4-SF-R9-12:
+          ansible_host: "172.30.61.222"
+        SW-BO-NAV-UE4-SF-R10-11:
+          ansible_host: "172.30.61.223"
+        SW-BO-NAV-UE4-SF-R11-11:
+          ansible_host: "172.30.61.224"
+        SW-BO-NAV-UE4-SF-R12-11:
+          ansible_host: "172.30.61.225"
+        SW-BO-NAV-UE4-SF-R15-11:
+          ansible_host: "172.30.61.228"
+        SW-BO-NAV-UE4-SF-R16-11:
+          ansible_host: "172.30.61.229"
+        SW-BO-NAV-UE4-SF-R17-11:
+          ansible_host: "172.30.61.230"
+        SW-BO-NAV-UE4-SF-R18-11:
+          ansible_host: "172.30.61.231"
+        SW-BO-NAV-UE4-SF-R28-11:
+          ansible_host: "172.30.61.232"
+        SW-BO-NAV-UE4-SF-R29-11:
+          ansible_host: "172.30.61.233"
+        SW-BO-NAV-UE4-SF-R30-11:
+          ansible_host: "172.30.61.234"
+        SW-BO-NAV-UE4-SF-R31-11:
+          ansible_host: "172.30.61.235"
+        SW-BO-NAV-UE4-SF-R32-11:
+          ansible_host: "172.30.61.236"
+    Aruba 8360-48Y6C Front-to-Back: {}

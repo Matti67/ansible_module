@@ -1,0 +1,683 @@
+---
+ProCurve:
+  children:
+    ProCurve 1700-24:
+      hosts:
+        SWT-CE-AVI:
+          ansible_host: "172.30.33.204"
+        SWT-CE-BIG:
+          ansible_host: "172.30.2.202"
+        SWT-CE-DLI:
+          ansible_host: "172.30.56.200"
+        SWT-CE-SGI:
+          ansible_host: "172.30.2.203"
+        SWT-CE-SPO:
+          ansible_host: "172.30.19.200"
+    ProCurve 2510-24A:
+      hosts:
+        SWT-STATMO-LAB:
+          ansible_host: "172.30.13.244"
+    ProCurve 2510-24B:
+      hosts:
+        SW-BO-CESIA-RETI-00:
+          ansible_host: "172.30.42.101"
+        SWT-FITEL11:
+          ansible_host: "172.30.14.250"
+        i-sp1id1:
+          ansible_host: "172.30.13.56"
+        sp-1id1:
+          ansible_host: "172.30.13.49"
+    ProCurve 2524:
+      hosts:
+        HP2524-Granarolo-A2:
+          ansible_host: "172.30.161.2"
+        SW-BO-STRMAG45-PI-005:
+          ansible_host: "172.30.19.250"
+        SWT-CAMMR:
+          ansible_host: "172.30.40.110"
+        SWT-CIDMZ:
+          ansible_host: "137.204.146.252"
+        SWT-CN51:
+          ansible_host: "172.30.23.244"
+        SWT-ING-VOIP:
+          ansible_host: "172.30.5.249"
+        SWT-OBAULA:
+          ansible_host: "172.30.26.232"
+        SWT-SGM-VOIP:
+          ansible_host: "172.30.10.250"
+        SWT-TELPS:
+          ansible_host: "172.30.3.250"
+        SWT-ing67-1:
+          ansible_host: "172.30.249.220"
+        s320-swrbraga:
+          ansible_host: "172.30.42.18"
+        swt-lazz11-2:
+          ansible_host: "172.30.16.191"
+        swt-lazz12-2:
+          ansible_host: "172.30.16.192"
+        swt-mars2:
+          ansible_host: "172.30.36.116"
+    ProCurve 2610-24:
+      hosts:
+        SW-BO-BERS4-PT-127:
+          ansible_host: "172.30.19.232"
+        SW-BO-BERS6-PT-141:
+          ansible_host: "172.30.19.214"
+        SW-BO-SELMI2-10:
+          ansible_host: "172.30.42.23"
+        SW-BO-STRMAG45-P1-080:
+          ansible_host: "172.30.19.225"
+        SW-BO-STRMAG45-P1-112:
+          ansible_host: "172.30.19.215"
+        SW-BO-STRMAG45-P1-133-1:
+          ansible_host: "172.30.19.223"
+        SW-BO-STRMAG45-P1-140:
+          ansible_host: "172.30.19.242"
+        SW-BO-STRMAG45-P2-024-1:
+          ansible_host: "172.30.19.222"
+        SW-BO-STRMAG45-P2-033:
+          ansible_host: "172.30.19.219"
+        SW-BO-STRMAG45-P2-034:
+          ansible_host: "172.30.19.238"
+        SWT-AC11:
+          ansible_host: "172.30.35.30"
+        SWT-CESU-LAB:
+          ansible_host: "172.30.42.96"
+        SWT-CSFC11:
+          ansible_host: "172.30.33.200"
+        SWT-DDGG11:
+          ansible_host: "172.30.2.28"
+        SWT-DLG71:
+          ansible_host: "172.30.56.17"
+        SWT-INFA11:
+          ansible_host: "172.30.58.20"
+        SWT-INMC21:
+          ansible_host: "172.30.57.12"
+        SWT-PASP21:
+          ansible_host: "172.30.42.249"
+        SWT-PST11:
+          ansible_host: "172.30.36.26"
+        SWT-STAL11:
+          ansible_host: "172.30.33.201"
+        i-sp-1id1:
+          ansible_host: "172.30.13.60"
+        i-sp0id1:
+          ansible_host: "172.30.13.58"
+        i-sp0id2:
+          ansible_host: "172.30.13.59"
+        sp-1id4:
+          ansible_host: "172.30.13.51"
+        sp0id6:
+          ansible_host: "172.30.13.44"
+        sp0id14:
+          ansible_host: "172.30.13.55"
+        sp2id3:
+          ansible_host: "172.30.13.43"
+    ProCurve 2610-24-PoE:
+      hosts:
+        SWT-REC21:
+          ansible_host: "172.30.54.248"
+    ProCurve 2610-48:
+      hosts:
+        SW-BO-BERS4-PT-123:
+          ansible_host: "172.30.19.212"
+        SW-BO-BERS6-PA-052:
+          ansible_host: "172.30.19.231"
+        SW-BO-GALLIERA3-12:
+          ansible_host: "172.30.52.12"
+        SW-BO-STRMAG45-P1-132:
+          ansible_host: "172.30.19.239"
+        SW-BO-STRMAG45-P1-133-2:
+          ansible_host: "172.30.19.224"
+        SW-BO-STRMAG45-PA-004:
+          ansible_host: "172.30.19.195"
+        SW-BO-STRMAG45-PA-021:
+          ansible_host: "172.30.19.228"
+        SW-BO-STRMAG45-PA2-005:
+          ansible_host: "172.30.19.203"
+        SW-BO-STRMAG45-PT-050:
+          ansible_host: "172.30.19.207"
+        SW-BO-STRMAG45-PT-103:
+          ansible_host: "172.30.19.205"
+        SW-BO-STRMAG45-PT-116:
+          ansible_host: "172.30.19.211"
+        SWT-APEC12:
+          ansible_host: "172.30.18.11"
+        SWT-APEC13:
+          ansible_host: "172.30.18.12"
+        SWT-APOS-ZSR26:
+          ansible_host: "172.30.60.57"
+        SWT-AUCT11:
+          ansible_host: "172.30.60.98"
+        SWT-BUB21:
+          ansible_host: "172.30.43.249"
+        SWT-CADR21:
+          ansible_host: "172.30.58.12"
+        SWT-CADR31:
+          ansible_host: "172.30.58.13"
+        SWT-CADR41:
+          ansible_host: "172.30.58.14"
+        SWT-CP11:
+          ansible_host: "172.30.60.90"
+        SWT-DDGG21:
+          ansible_host: "172.30.2.29"
+        SWT-DLB21:
+          ansible_host: "172.30.56.12"
+        SWT-DLE51:
+          ansible_host: "172.30.56.15"
+        SWT-DSE51:
+          ansible_host: "172.30.40.105"
+        SWT-FABIT21:
+          ansible_host: "172.30.42.34"
+        SWT-IGCI21:
+          ansible_host: "172.30.43.3"
+        SWT-IGCI31:
+          ansible_host: "172.30.43.4"
+        SWT-IGCI41:
+          ansible_host: "172.30.43.6"
+        SWT-INMC31:
+          ansible_host: "172.30.57.13"
+        SWT-PSC11:
+          ansible_host: "172.30.42.7"
+        SWT-REC11:
+          ansible_host: "172.30.54.249"
+        SWT-SSSU12:
+          ansible_host: "172.30.36.122"
+        SWT-UFDI11:
+          ansible_host: "172.30.36.218"
+    ProCurve 2626 - J4900A: {}
+    ProCurve 2626 - J4900B:
+      hosts:
+        SW-BO-BERS6-P1-054:
+          ansible_host: "172.30.19.230"
+        SW-BO-STRMAG45-P1-017-2:
+          ansible_host: "172.30.19.197"
+        SW-BO-STRMAG45-P1-022:
+          ansible_host: "172.30.19.216"
+        SW-BO-STRMAG45-P1-144:
+          ansible_host: "172.30.19.213"
+        SW-BO-STRMAG45-ST-AREA3:
+          ansible_host: "172.30.19.218"
+        SWT-AVI41:
+          ansible_host: "172.30.33.172"
+        SWT-CUS11:
+          ansible_host: "172.30.43.17"
+        SWT-DLF61:
+          ansible_host: "172.30.56.16"
+        SWT-DSTE13:
+          ansible_host: "172.30.42.229"
+        SWT-FARMVOIP:
+          ansible_host: "172.30.49.249"
+        SWT-SCMS51:
+          ansible_host: "172.30.22.245"
+        SWT-VIOL21:
+          ansible_host: "172.30.26.249"
+    ProCurve 2626 - J4900C:
+      hosts:
+        SW-BO-STRMAG45-PT-032:
+          ansible_host: "172.30.19.210"
+        SWT-DIPS13:
+          ansible_host: "172.30.21.248"
+        SWT-SCR81:
+          ansible_host: "172.30.34.28"
+        s320-swrackc1.ciam.unibo.it:
+          ansible_host: "172.30.42.19"
+    ProCurve 2650 - J4899A:
+      hosts:
+        SWT-SCR61:
+          ansible_host: "172.30.34.26"
+    ProCurve 2650 - J4899B:
+      hosts:
+        SW-BO-STRMAG45-P1-098:
+          ansible_host: "172.30.19.233"
+        SW-BO-STRMAG45-P2-024-2:
+          ansible_host: "172.30.19.237"
+        SW-BO-STRMAG45-P2-077:
+          ansible_host: "172.30.19.235"
+        SW-BO-STRMAG45-P2-H11:
+          ansible_host: "172.30.19.221"
+        SW-BO-STRMAG45-PT-066:
+          ansible_host: "172.30.19.229"
+        SWT-ANTR11:
+          ansible_host: "172.30.42.9"
+        SWT-CBZA:
+          ansible_host: "172.30.20.34"
+        SWT-CESU12:
+          ansible_host: "172.30.42.99"
+        SWT-CESU13:
+          ansible_host: "172.30.42.97"
+        SWT-CN-EMG:
+          ansible_host: "172.30.23.247"
+        SWT-DICI-E1:
+          ansible_host: "172.30.42.24"
+        SWT-DICI-E2:
+          ansible_host: "172.30.42.25"
+        SWT-DICI-F1:
+          ansible_host: "172.30.42.26"
+        SWT-DIEC13:
+          ansible_host: "172.30.48.248"
+        SWT-DIPS12:
+          ansible_host: "172.30.21.249"
+        SWT-FCHI11:
+          ansible_host: "172.30.161.1"
+        SWT-FR8-31:
+          ansible_host: "172.30.248.247"
+        SWT-GIURBEL21:
+          ansible_host: "172.30.43.13"
+        SWT-GIURBEL31:
+          ansible_host: "172.30.43.14"
+        SWT-IG01:
+          ansible_host: "172.30.43.7"
+        SWT-IGCI32:
+          ansible_host: "172.30.43.5"
+        SWT-IMSCAR11:
+          ansible_host: "172.30.160.240"
+        SWT-IRSIG11:
+          ansible_host: "172.30.60.58"
+        SWT-ISTO11:
+          ansible_host: "172.30.42.13"
+        SWT-LAB-DEIS:
+          ansible_host: "172.30.23.248"
+        SWT-NLAZ10-2:
+          ansible_host: "172.30.16.236"
+        SWT-NLAZ42:
+          ansible_host: "172.30.16.234"
+        SWT-NLAZ62:
+          ansible_host: "172.30.16.243"
+        SWT-NLAZ92:
+          ansible_host: "172.30.16.238"
+        SWT-SCMS41:
+          ansible_host: "172.30.22.246"
+        SWT-SCR71:
+          ansible_host: "172.30.34.27"
+        SWT-VESP21:
+          ansible_host: "172.30.160.249"
+        SWT-VET10-1:
+          ansible_host: "172.30.33.160"
+        SWT-VET61:
+          ansible_host: "172.30.33.156"
+        SWT-VET91:
+          ansible_host: "172.30.33.159"
+        SWT-ZSR07:
+          ansible_host: "172.30.2.16"
+        SWT-ing19-1:
+          ansible_host: "172.30.249.158"
+        SWT-ing59-1:
+          ansible_host: "172.30.249.154"
+        s320-swrackg1.ciam.unibo.it:
+          ansible_host: "172.30.42.35"
+        s320-swracki1.ciam.unibo.it:
+          ansible_host: "172.30.42.36"
+    ProCurve 2650 - J4899C:
+      hosts:
+        SW-BO-STRMAG45-P1-017-1:
+          ansible_host: "172.30.19.241"
+        SWT-CN31:
+          ansible_host: "172.30.23.246"
+        SWT-DIEC12:
+          ansible_host: "172.30.48.249"
+        SWT-MINE21:
+          ansible_host: "172.30.42.233"
+        SWT-MINE41:
+          ansible_host: "172.30.42.231"
+        SWT-SCR21:
+          ansible_host: "172.30.34.22"
+        SWT-SGIAM01:
+          ansible_host: "172.30.35.251"
+        s320-swrackc2.ciam.unibo.it:
+          ansible_host: "172.30.42.20"
+        s320-swrackd1.ciam.unibo.it:
+          ansible_host: "172.30.42.21"
+        s320-swrackd2.ciam.unibo.it:
+          ansible_host: "172.30.42.22"
+        s320-swrackh1.ciam.unibo.it:
+          ansible_host: "172.30.42.28"
+    ProCurve 2810-48G:
+      hosts:
+        SWT-GM81:
+          ansible_host: "172.30.10.218"
+        SaragozzaDAPT-DIEM:
+          ansible_host: "172.30.15.246"
+        swt-pepoli1:
+          ansible_host: "172.30.23.1"
+        swt-pepoli2:
+          ansible_host: "172.30.23.2"
+    ProCurve 2824:
+      hosts:
+        SWT-ALSS52:
+          ansible_host: "192.12.47.241"
+        SWT-BUB41:
+          ansible_host: "172.30.43.247"
+        SWT-DSTE11:
+          ansible_host: "172.30.42.245"
+        SWT-FIS11:
+          ansible_host: "172.30.248.201"
+        SWT-MNG30:
+          ansible_host: "137.204.30.93"
+        SWT-ing61-3-pene:
+          ansible_host: "172.30.249.199"
+    ProCurve 2910al-24G:
+      hosts:
+        SWT-CADR11:
+          ansible_host: "172.30.58.11"
+        SWT-INMC11:
+          ansible_host: "172.30.57.11"
+    ProCurve 4104GL: {}
+    ProCurve 4202vl-72 - J8772A:
+      hosts:
+        SWT-NLAZ71:
+          ansible_host: "172.30.16.242"
+        SWT-VESP11:
+          ansible_host: "172.30.160.250"
+    ProCurve 4202vl-72 - J8772B:
+      hosts:
+        SWT-FI11:
+          ansible_host: "172.30.26.244"
+        SWT-FR8-21:
+          ansible_host: "172.30.248.248"
+        SWT-FR8-41:
+          ansible_host: "172.30.248.246"
+        SWT-FR8-51:
+          ansible_host: "172.30.248.245"
+        SWT-FR8-61:
+          ansible_host: "172.30.248.244"
+        SWT-SG-SPISA:
+          ansible_host: "172.30.43.9"
+        SWT-VESP31:
+          ansible_host: "172.30.160.248"
+    ProCurve 4204vl:
+      hosts:
+        SWT-CBBA:
+          ansible_host: "172.30.20.12"
+        SWT-CBCA:
+          ansible_host: "172.30.20.13"
+        SWT-CBDA:
+          ansible_host: "172.30.20.14"
+        SWT-CBKA:
+          ansible_host: "172.30.20.21"
+        SWT-CBOA:
+          ansible_host: "172.30.20.25"
+        SWT-CBSA:
+          ansible_host: "172.30.20.29"
+        SWT-CBTA:
+          ansible_host: "172.30.20.30"
+        SWT-CBUA:
+          ansible_host: "172.30.20.31"
+        SWT-CBVA:
+          ansible_host: "172.30.20.32"
+        SWT-CBWA:
+          ansible_host: "172.30.20.33"
+        SWT-CILT21:
+          ansible_host: "172.30.10.216"
+        SWT-DLC31:
+          ansible_host: "172.30.56.13"
+        SWT-DLD41:
+          ansible_host: "172.30.56.14"
+        SWT-DSTE22:
+          ansible_host: "172.30.42.230"
+        SWT-DSTE61:
+          ansible_host: "172.30.42.239"
+        SWT-MINE11:
+          ansible_host: "172.30.42.234"
+        SWT-PASP12:
+          ansible_host: "172.30.42.248"
+        SWT-VET11-1:
+          ansible_host: "172.30.33.161"
+        SWT-VET13-1:
+          ansible_host: "172.30.33.163"
+        SWT-VET81:
+          ansible_host: "172.30.33.158"
+    ProCurve 4208vl:
+      hosts:
+        G-SP-1ID1:
+          ansible_host: "172.30.13.52"
+        SWT-BUB11:
+          ansible_host: "172.30.43.250"
+        SWT-CBEA:
+          ansible_host: "172.30.20.15"
+        SWT-CBFA:
+          ansible_host: "172.30.20.16"
+        SWT-CBHA:
+          ansible_host: "172.30.20.18"
+        SWT-CBIA:
+          ansible_host: "172.30.20.19"
+        SWT-CBJA:
+          ansible_host: "172.30.20.20"
+        SWT-CBLA:
+          ansible_host: "172.30.20.22"
+        SWT-CBMA:
+          ansible_host: "172.30.20.23"
+        SWT-CBNA:
+          ansible_host: "172.30.20.24"
+        SWT-CBPA:
+          ansible_host: "172.30.20.26"
+        SWT-CBQA:
+          ansible_host: "172.30.20.27"
+        SWT-CBRA:
+          ansible_host: "172.30.20.28"
+        SWT-CBYA:
+          ansible_host: "172.30.20.128"
+        SWT-CILT11:
+          ansible_host: "172.30.10.215"
+        SWT-CO11:
+          ansible_host: "172.30.45.249"
+        SWT-CO21:
+          ansible_host: "172.30.45.248"
+        SWT-DSTE12:
+          ansible_host: "172.30.42.244"
+        SWT-GIURBEL41:
+          ansible_host: "172.30.43.15"
+        SWT-GIURBEL51:
+          ansible_host: "172.30.43.16"
+        SWT-IG11:
+          ansible_host: "172.30.42.31"
+        SWT-NLAZ10-1:
+          ansible_host: "172.30.16.237"
+        SWT-NLAZ21:
+          ansible_host: "172.30.16.248"
+        SWT-NLAZ41:
+          ansible_host: "172.30.16.246"
+        SWT-NLAZ61:
+          ansible_host: "172.30.16.244"
+        SWT-NLAZ81:
+          ansible_host: "172.30.16.241"
+        SWT-NLAZ91:
+          ansible_host: "172.30.16.239"
+        SWT-STATMO11:
+          ansible_host: "172.30.13.245"
+        SWT-VET21:
+          ansible_host: "172.30.33.152"
+        SWT-VET31:
+          ansible_host: "172.30.33.153"
+        SWT-VET41:
+          ansible_host: "172.30.33.154"
+        SWT-VET51:
+          ansible_host: "172.30.33.155"
+        SWT-VET71:
+          ansible_host: "172.30.33.157"
+        SWT-ing60-1:
+          ansible_host: "172.30.249.203"
+    ProCurve 4208vl-96:
+      hosts:
+        SWT-ASTR-D:
+          ansible_host: "172.30.13.241"
+    ProCurve 5304xl:
+      hosts:
+        SWT-CBGA:
+          ansible_host: "172.30.20.17"
+        SWT-CHIMIND11:
+          ansible_host: "172.30.245.120"
+        SWT-DSE21:
+          ansible_host: "172.30.40.102"
+        SWT-FSF51:
+          ansible_host: "172.30.26.239"
+        SWT-FSF61:
+          ansible_host: "172.30.26.238"
+        SWT-Ing-Lab0:
+          ansible_host: "172.30.249.145"
+        SWT-MAST11:
+          ansible_host: "172.30.59.250"
+        SWT-MUSPE41:
+          ansible_host: "172.30.11.246"
+        SWT-SCMS21:
+          ansible_host: "172.30.22.248"
+        SWT-SCR31:
+          ansible_host: "172.30.34.23"
+        SWT-SCR41:
+          ansible_host: "172.30.34.24"
+        SWT-SCR51:
+          ansible_host: "172.30.34.25"
+        SWT-ZSR00:
+          ansible_host: "172.30.2.2"
+        SWT-ZSR01:
+          ansible_host: "172.30.2.11"
+        SWT-ZSR05:
+          ansible_host: "172.30.2.14"
+        SWT-ZSR22:
+          ansible_host: "172.30.2.4"
+        SWT-ZSR24:
+          ansible_host: "172.30.2.6"
+        SWT-ZSR25:
+          ansible_host: "172.30.2.7"
+        SWT-ZSR26:
+          ansible_host: "172.30.2.8"
+        SWT-ZSR28:
+          ansible_host: "172.30.2.10"
+        SWT-ZSR40-1:
+          ansible_host: "172.30.2.24"
+        SWT-ZSR40-2:
+          ansible_host: "172.30.2.25"
+        SWT-ing41-1:
+          ansible_host: "172.30.249.189"
+        SWT-ing44-1:
+          ansible_host: "172.30.249.190"
+        SWT-ing68-1:
+          ansible_host: "172.30.249.180"
+        gigabitxen:
+          ansible_host: "172.30.249.155"
+        swt-lazz-15-1:
+          ansible_host: "172.30.16.190"
+        swt-lazz13-1:
+          ansible_host: "172.30.16.194"
+    ProCurve 5308xl:
+      hosts:
+        SWT-AMND11:
+          ansible_host: "172.30.7.1"
+        SWT-CANCER11:
+          ansible_host: "172.30.41.249"
+        SWT-CESU11:
+          ansible_host: "172.30.42.100"
+        SWT-CIRFID:
+          ansible_host: "172.30.52.249"
+        SWT-DICI11:
+          ansible_host: "172.30.42.16"
+        SWT-DSE31:
+          ansible_host: "172.30.40.103"
+        SWT-DSE41:
+          ansible_host: "172.30.40.104"
+        SWT-FIUM12:
+          ansible_host: "172.30.14.236"
+        SWT-FSF21:
+          ansible_host: "172.30.26.242"
+        SWT-FSF31:
+          ansible_host: "172.30.26.241"
+        SWT-FSF41:
+          ansible_host: "172.30.26.240"
+        SWT-MUSPE21:
+          ansible_host: "172.30.11.248"
+        SWT-MUSPE31:
+          ansible_host: "172.30.11.247"
+        SWT-MUSPE51:
+          ansible_host: "172.30.11.245"
+        SWT-MUSPE61:
+          ansible_host: "172.30.11.244"
+        SWT-MUSPE71:
+          ansible_host: "172.30.11.243"
+        SWT-SCFARM11:
+          ansible_host: "172.30.42.1"
+        SWT-SCFARM21:
+          ansible_host: "172.30.42.2"
+        SWT-SCMS12:
+          ansible_host: "172.30.22.249"
+        SWT-SCMS31:
+          ansible_host: "172.30.22.247"
+        SWT-ZSR02:
+          ansible_host: "172.30.2.12"
+        SWT-ZSR03:
+          ansible_host: "172.30.2.13"
+        SWT-ZSR06:
+          ansible_host: "172.30.2.15"
+        SWT-ZSR08:
+          ansible_host: "172.30.2.17"
+        SWT-ZSR10:
+          ansible_host: "172.30.2.19"
+        SWT-ZSR11:
+          ansible_host: "172.30.2.20"
+        SWT-ZSR12:
+          ansible_host: "172.30.2.21"
+        SWT-ZSR14:
+          ansible_host: "172.30.2.23"
+        SWT-ZSR21:
+          ansible_host: "172.30.2.3"
+        SWT-ZSR23:
+          ansible_host: "172.30.2.5"
+        SWT-ZSR27:
+          ansible_host: "172.30.2.9"
+        SWT-ZSRLettere:
+          ansible_host: "172.30.2.26"
+        SWT-ing-CCIBrame:
+          ansible_host: "172.30.249.209"
+        SWT-ing2-1:
+          ansible_host: "172.30.249.161"
+        SWT-ing8-1:
+          ansible_host: "172.30.249.165"
+        SWT-ing12-1:
+          ansible_host: "172.30.249.169"
+        SWT-ing14-1:
+          ansible_host: "172.30.249.170"
+        SWT-ing16-1:
+          ansible_host: "172.30.249.171"
+        SWT-ing18-1:
+          ansible_host: "172.30.249.173"
+        SWT-ing20-1:
+          ansible_host: "172.30.249.216"
+        SWT-ing23-1:
+          ansible_host: "172.30.249.175"
+        SWT-ing24-1:
+          ansible_host: "172.30.249.176"
+        SWT-ing26-1:
+          ansible_host: "172.30.249.179"
+        SWT-ing29-1:
+          ansible_host: "172.30.249.182"
+        SWT-ing32-1:
+          ansible_host: "172.30.249.185"
+        SWT-ing33-1:
+          ansible_host: "172.30.249.215"
+        SWT-ing40-1:
+          ansible_host: "172.30.249.188"
+        SWT-ing42-1:
+          ansible_host: "172.30.249.214"
+        SWT-ing46-1:
+          ansible_host: "172.30.249.191"
+        swt-ing-E:
+          ansible_host: "172.30.249.149"
+        swt-lazz1-1:
+          ansible_host: "172.30.16.199"
+        swt-lazz2-1:
+          ansible_host: "172.30.16.198"
+        swt-lazz4-1:
+          ansible_host: "172.30.16.197"
+        swt-lazz11-1:
+          ansible_host: "172.30.16.196"
+        swt-lazz12-1:
+          ansible_host: "172.30.16.195"
+        swt-lazz14-1:
+          ansible_host: "172.30.16.193"
+    ProCurve 5406zl:
+      hosts:
+        SWT-CBA:
+          ansible_host: "172.30.20.11"
+        SWT-DLA11:
+          ansible_host: "172.30.56.11"
+        SWT-ino:
+          ansible_host: "172.30.249.230"
