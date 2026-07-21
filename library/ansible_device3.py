@@ -123,51 +123,84 @@ class CreateInv:
             return SwitchOff
         #k += 1
     # Main execution
+    #def __retrieveIpList(self, vendor):
+    #    #vendor = index_device
+    #    try:
+    #        # Submit the job
+    #        job_url = self.__submit_familyjob(vendor)
+    #        print(f"familyJob submitted successfully. Tracking URL: {job_url}")
+    #        
+    #        # Poll until job completion
+    #        job_result = self.__poll_job(job_url)
+    #        job_result1 = job_result.get("data")
+    #        job_complete = job_result1['output']
+    #        #iplist =[]
+    #        addrlist = []
+    #        #create a list with ip address as elements
+    #        #for line in job_complete.split('\n'):
+    #        #    element = line.rsplit(',',1)[1]
+    #        #    #append the last delimeter element
+    #        #    addrlist.append(element)
+    #        ##create a list with just real ip address
+    #        #for i in addrlist:
+    #        #    if str(i[:1])=='1':
+    #        #        self.__iplist.append(i)
+    #        #
+    #        for line in job_complete.split('\n'):
+    #            sysname, element = line.rsplit(',', 1)  # Extract text and number
+    #            addrlist.append({"elem": element, "sys": sysname})  # Structured JSON format
+    #        #
+    #        self.__iplist = [item for item in addrlist if item["elem"].startswith("1")]
+    #        #self.__family_items2 =
+    #        json_output = json.dumps(addrlist, indent=4)
+    #        #straddr = str(job_complete)
+    #        #job_complete.replace('\n', '\\n')
+    #        #lines = job_complete.split('\\n')
+    #        # Print the output
+    #        print("Job completed. Output data:")
+    #        #print(job_result.get("data", "No data returned from job."))
+    #        #print(lines)
+    #        print(job_complete)
+    #        #print(*addrlist,sep='\n')
+    #        print(*self.__iplist,sep='\n')
+    #        return self.__iplist
+#
+    #    except Exception as e:
+    #        print(f"An error occurred: {e}")
     def __retrieveIpList(self, vendor):
-        #vendor = index_device
         try:
-            # Submit the job
             job_url = self.__submit_familyjob(vendor)
             print(f"familyJob submitted successfully. Tracking URL: {job_url}")
             
-            # Poll until job completion
             job_result = self.__poll_job(job_url)
             job_result1 = job_result.get("data")
             job_complete = job_result1['output']
-            #iplist =[]
+
+            if not job_complete:
+                print("Warning: job output is empty.")
+                self.__iplist = []
+                return self.__iplist
+
             addrlist = []
-            #create a list with ip address as elements
-            #for line in job_complete.split('\n'):
-            #    element = line.rsplit(',',1)[1]
-            #    #append the last delimeter element
-            #    addrlist.append(element)
-            ##create a list with just real ip address
-            #for i in addrlist:
-            #    if str(i[:1])=='1':
-            #        self.__iplist.append(i)
-            #
             for line in job_complete.split('\n'):
-                sysname, element = line.rsplit(',', 1)  # Extract text and number
-                addrlist.append({"elem": element, "sys": sysname})  # Structured JSON format
-            #
+                line = line.strip()
+                if not line or ',' not in line:  # ← skip empty/malformed lines
+                    continue
+                sysname, element = line.rsplit(',', 1)
+                addrlist.append({"elem": element, "sys": sysname})
+
             self.__iplist = [item for item in addrlist if item["elem"].startswith("1")]
-            #self.__family_items2 =
-            json_output = json.dumps(addrlist, indent=4)
-            #straddr = str(job_complete)
-            #job_complete.replace('\n', '\\n')
-            #lines = job_complete.split('\\n')
-            # Print the output
+
             print("Job completed. Output data:")
-            #print(job_result.get("data", "No data returned from job."))
-            #print(lines)
             print(job_complete)
-            #print(*addrlist,sep='\n')
-            print(*self.__iplist,sep='\n')
+            print(*self.__iplist, sep='\n')
             return self.__iplist
 
         except Exception as e:
             print(f"An error occurred: {e}")
-            
+            traceback.print_exc()  # ← print full traceback so errors are visible
+            self.__iplist = []     # ← return empty list, not None
+            return self.__iplist  
 
     def retrieveFamilySet(self):
         try:
@@ -195,7 +228,7 @@ class CreateInv:
             for item in self.__family_items:
                 #
                 #for key, value in item.items():
-                print(f"item[index] and item[family]:  {item[index]} {item[family]}")
+                print(f"item[index] and item[family]:  {item['index']} {item['family']}")
             #return self.__family_items
         except Exception as e:
             print(f"An error occurred: {e}")
